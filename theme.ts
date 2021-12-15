@@ -6,6 +6,7 @@ import { extendTheme, themeTools, ITheme } from "native-base"
  * https://docs.nativebase.io/customizing-theme
  * https://docs.nativebase.io/customizing-components
  * https://docs.nativebase.io/utility-props#style-props
+ * https://reactnavigation.org/docs/themes/
  */
 
 const schema ={
@@ -40,10 +41,6 @@ const light = {
 }
 
 export const theme: ITheme = extendTheme({
-    config: {
-        // Changing initialColorMode to 'dark'
-        // initialColorMode: 'dark',
-    },
     colors: {
         primary: schema,
         dark: dark,

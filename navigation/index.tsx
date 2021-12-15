@@ -7,6 +7,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 
+/**
+ * Regarding Themeing, Please check following.
+ * https://reactnavigation.org/docs/themes/
+ */
 // theme
 import { ITheme } from "native-base"
 import { navDarkTheme, navLightTheme } from '../theme'
@@ -26,11 +30,6 @@ import { RootStackParamList } from './types';
 import { Pressable, Icon } from "native-base"
 import { Feather } from "@expo/vector-icons"
 
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- * https://reactnavigation.org/docs/stack-navigator/
- */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function Navigator({theme}: {theme: ITheme}) {
