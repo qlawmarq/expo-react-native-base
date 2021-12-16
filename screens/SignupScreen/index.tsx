@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useNavigation } from '@react-navigation/native';
-import ApiService from '../../lib/api/endpoints'
+import ApiService from '../../lib/axios/endpoints'
 import { DefaultLayout } from '../../layout/Default'
 import {
   Box,

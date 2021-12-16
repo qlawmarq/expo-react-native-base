@@ -1,6 +1,12 @@
 import * as React from "react"
+
+//router
 import { useNavigation } from '@react-navigation/native';
-import ApiService from '../../lib/api/endpoints'
+
+// api
+import ApiService from '../../lib/axios/endpoints'
+
+//components
 import { DefaultLayout } from '../../layout/Default'
 import {
   Box,
@@ -13,19 +19,24 @@ import {
   Button,
   HStack,
 } from "native-base"
-import { background } from "native-base/lib/typescript/theme/styled-system";
+
+//redux
+import { useDispatch } from 'react-redux';
+import { setUser, setToken } from "../../lib/redux/slices/authSlice";
+
 export default function SigninScreen(){
+  const dispatch = useDispatch();
   const [email, onChangeEmail] = React.useState("");
   const [password, onChangePassword] = React.useState("");
   const navigation = useNavigation();
   const onPressSigninButton = async () => {
-    // const values = {
-    //   email,
-    //   password
-    // }
-    // const res = await ApiService.signin(values)
-    // localStorage.setItem('nuxt3_auth', JSON.stringify(res.data.token));
-    // localStorage.setItem('nuxt3_user', JSON.stringify(res.data.user));
+    const values = {
+      email,
+      password
+    }
+    const res = await ApiService.signin(values)
+    dispatch(setUser(res.data.user));
+    dispatch(setToken(res.data.token));
     navigation.navigate('List')
   }
   const onPressSignupLink = async () => {
