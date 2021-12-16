@@ -29,12 +29,14 @@ npm run start
 Please check here for deatils:
 https://reactnative.dev/docs/environment-setup
 
-## State/Storage
+## Guide
+
+### State/Storage
 
 This app are using [Redux(toolkit)](https://redux-toolkit.js.org/) for state management, 
 and also using [Async Storage](https://react-native-async-storage.github.io/async-storage/) for data storage.
 
-## Theme
+### Theme
 
 You can customize theme with `theme.ts`.
 Learn more about extending/customizing theme:
@@ -59,19 +61,19 @@ But, manual setup is also possible:
 ```
 
 
-## Navigation
+### Navigation
 
 You can setup routing inside of `navigation` folder.
 For more information, Please check [React Navigation](https://reactnavigation.org/) website.
 
 
-## API calling
+### API calling
 
 This app are using [Axios](https://axios-http.com/) for API calling.
 You can add your api in `lib/axios`.
 
 
-## Icon
+### Icon
 
 You can explore the built-in icon families and icons on the web at here:
 https://icons.expo.fyi/
@@ -86,7 +88,7 @@ export default function Example() {
 }
 ```
 
-## Another libraries
+### Another libraries
 
 Please check following:
 https://reactnative.directory/popular
