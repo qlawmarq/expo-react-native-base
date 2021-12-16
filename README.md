@@ -11,6 +11,7 @@
  - [React Native](https://reactnative.dev/)
  - [Expo](https://expo.dev/)
  - [React Navigation](https://reactnavigation.org/)
+ - [Redux](https://redux-toolkit.js.org/)
  - [Native Base](https://nativebase.io/)
  - [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
  - [Axios](https://axios-http.com/)
@@ -27,6 +28,11 @@ npm run start
 
 Please check here for deatils:
 https://reactnative.dev/docs/environment-setup
+
+## State/Storage
+
+This app are using [Redux(toolkit)](https://redux-toolkit.js.org/) for state management, 
+and also using [Async Storage](https://react-native-async-storage.github.io/async-storage/) for data storage.
 
 ## Theme
 
@@ -56,11 +62,13 @@ But, manual setup is also possible:
 ## Navigation
 
 You can setup routing inside of `navigation` folder.
+For more information, Please check [React Navigation](https://reactnavigation.org/) website.
 
 
-## API
+## API calling
 
-You can setup api calling with `lib/api`.
+This app are using [Axios](https://axios-http.com/) for API calling.
+You can add your api in `lib/axios`.
 
 
 ## Icon

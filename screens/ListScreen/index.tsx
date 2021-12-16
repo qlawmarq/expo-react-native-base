@@ -13,7 +13,13 @@ import {
 import { DefaultLayout } from '../../layout/Default'
 import { data } from './mockdata'
 
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../lib/redux/store'
+
 export default function ListScreen() {
+    const { user } = useSelector((state: RootState) => state.auth);
+    console.log(user)
     const [lists, setLists] = useState<any[]>([]);
     const navigation = useNavigation()
     const route = useRoute()
