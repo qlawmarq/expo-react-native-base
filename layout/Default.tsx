@@ -4,7 +4,7 @@ export const DefaultLayout: React.FC = (props) =>{
   return (
     <Center
       width="100%"
-      height="100%"
+      height="container"
       _dark={{
         backgroundColor: "dark.background",
       }}

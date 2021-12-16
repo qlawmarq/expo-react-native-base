@@ -15,7 +15,7 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Feather.font,
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          'Open Sans': require('../assets/fonts/OpenSans-VariableFont_wdth,wght.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
