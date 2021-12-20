@@ -37,7 +37,8 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.10.1",
     "react-native-web": "0.17.5",
-    "react-redux": "7.2.6"
+    "react-redux": "7.2.6",
+    "redux-persist": "6.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
