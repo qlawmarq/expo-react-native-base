@@ -30,67 +30,90 @@ import { RootStackParamList } from './types';
 import { Pressable, Icon } from "native-base"
 import { Feather } from "@expo/vector-icons"
 
+// state(redux)
+import { useSelector } from 'react-redux';
+import { RootState } from '../lib/redux/store'
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function Navigator({theme}: {theme: ITheme}) {
+  const { user, token } = useSelector((state: RootState) => state.auth);
+
   return (
     <NavigationContainer theme={theme.config?.initialColorMode === 'dark' ? navDarkTheme : navLightTheme}>
-      <Stack.Navigator
-        initialRouteName="Signin"
-      >
-        <Stack.Screen
-          name="NotFound" 
-          component={NotfoundScreen} 
-          options={() => ({
-            title: 'NotFound',
-            headerShown: false
-          })}
-        />
-        <Stack.Screen
-          name="Signin"
-          component={SigninScreen}
-          options={() => ({
-            title: 'Signin',
-            headerShown: false
-          })}
-        />
-        <Stack.Screen
-          name="Signup"
-          component={SignupScreen}
-          options={() => ({
-            title: 'Signup',
-            headerShown: false
-          })}
-        />
-        <Stack.Screen
-          name="List"
-          component={ListScreen}
-          options={({ navigation }) => ({
-            title: 'List',
-            headerShown: true,
-            headerLeft: (() => null),
-            headerRight: (() => {
-              return <Pressable mr={10} onPress={()=> navigation.navigate('Chat')}><Icon as={Feather} name="message-square" size="sm" /></Pressable>
-            })
-          })}
-        />
-        <Stack.Screen
-          name="Detail"
-          component={DetailScreen}
-          options={() => ({
-            title: 'Detail',
-            headerShown: true
-          })}
-        />
-        <Stack.Screen
-          name="Chat"
-          component={ChatScreen}
-          options={({ navigation }) => ({
-            title: 'Chat',
-            headerShown: true
-          })}
-        />
-      </Stack.Navigator>
+      {(user && token) ? (
+        // Authenticated users rooting
+        <Stack.Navigator
+          initialRouteName="List"
+        >
+          <Stack.Screen
+            name="NotFound" 
+            component={NotfoundScreen} 
+            options={() => ({
+              title: 'NotFound',
+              headerShown: false
+            })}
+          />
+          <Stack.Screen
+            name="List"
+            component={ListScreen}
+            options={({ navigation }) => ({
+              title: 'List',
+              headerShown: true,
+              headerLeft: (() => null),
+              headerRight: (() => {
+                return <Pressable mr={10} onPress={()=> navigation.navigate('Chat')}><Icon as={Feather} name="message-square" size="sm" /></Pressable>
+              })
+            })}
+          />
+          <Stack.Screen
+            name="Detail"
+            component={DetailScreen}
+            options={() => ({
+              title: 'Detail',
+              headerShown: true
+            })}
+          />
+          <Stack.Screen
+            name="Chat"
+            component={ChatScreen}
+            options={({ navigation }) => ({
+              title: 'Chat',
+              headerShown: true
+            })}
+          />
+        </Stack.Navigator>
+      ) : (
+        // NOT authenticated users rooting
+        <Stack.Navigator
+          initialRouteName="Signin"
+        >
+          <Stack.Screen
+            name="NotFound" 
+            component={NotfoundScreen} 
+            options={() => ({
+              title: 'NotFound',
+              headerShown: false
+            })}
+          />
+          <Stack.Screen
+            name="Signin"
+            component={SigninScreen}
+            options={() => ({
+              title: 'Signin',
+              headerShown: false
+            })}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={SignupScreen}
+            options={() => ({
+              title: 'Signup',
+              headerShown: false
+            })}
+          />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 }
