@@ -4,20 +4,20 @@ import * as React from "react"
 import { useNavigation } from '@react-navigation/native';
 
 // api
-import ApiService from '../../lib/axios/endpoints'
+import { ApiService } from '../../lib/axios'
 
 //components
-import { DefaultLayout } from '../../layout/Default'
 import {
   Box,
   Text,
   Heading,
-  VStack,
+  Column,
   FormControl,
   Input,
   Link,
   Button,
-  HStack,
+  Row,
+  Center
 } from "native-base"
 
 //redux
@@ -43,12 +43,15 @@ export default function SigninScreen(){
     navigation.navigate('Signup')
   }
   return (
-    <DefaultLayout>
+    <Center
+      width="100%"
+      height="container"
+    >
       <Box safeArea p="2" py="8" w="90%">
         <Heading>
           Welcome
         </Heading>
-        <VStack space={3} mt="5">
+        <Column space={3} mt="5">
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
             <Input value={email} onChangeText={onChangeEmail} type="email"/>
@@ -66,7 +69,7 @@ export default function SigninScreen(){
           <Button onPress={onPressSigninButton} mt="2">
             Sign in
           </Button>
-          <HStack mt="6" justifyContent="center">
+          <Row mt="6" justifyContent="center">
             <Text>
               I'm a new user.{" "}
             </Text>
@@ -75,9 +78,9 @@ export default function SigninScreen(){
             >
               Sign Up
             </Link>
-          </HStack>
-        </VStack>
+          </Row>
+        </Column>
       </Box>
-    </DefaultLayout>
+    </Center>
   )
 }

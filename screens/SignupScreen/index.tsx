@@ -1,17 +1,17 @@
 import * as React from "react"
 import { useNavigation } from '@react-navigation/native';
-import ApiService from '../../lib/axios/endpoints'
-import { DefaultLayout } from '../../layout/Default'
+import { ApiService } from '../../lib/axios'
 import {
   Box,
   Text,
   Heading,
-  VStack,
+  Column,
   FormControl,
   Input,
   Link,
   Button,
-  HStack,
+  Row,
+  Center
 } from "native-base"
 export default function SignupScreen(){
   const [email, onChangeEmail] = React.useState("");
@@ -32,12 +32,15 @@ export default function SignupScreen(){
     navigation.navigate('Signin')
   }
   return (
-    <DefaultLayout>
+    <Center
+      width="100%"
+      height="container"
+    >
       <Box safeArea p="2" py="8" w="90%">
         <Heading>
           Register your account
         </Heading>
-        <VStack space={3} mt="5">
+        <Column space={3} mt="5">
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
             <Input value={email} onChangeText={onChangeEmail} type="email"/>
@@ -57,7 +60,7 @@ export default function SignupScreen(){
           <Button onPress={onPressSignup} mt="2">
             Sign up
           </Button>
-          <HStack mt="6" justifyContent="center">
+          <Row mt="6" justifyContent="center">
             <Text>
               Already have a account?{" "}
             </Text>
@@ -66,9 +69,9 @@ export default function SignupScreen(){
             >
               Sign in
             </Link>
-          </HStack>
-        </VStack>
+          </Row>
+        </Column>
       </Box>
-    </DefaultLayout>
+    </Center>
   )
 }

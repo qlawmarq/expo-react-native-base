@@ -1,18 +1,9 @@
 import React from "react"
 import { useRoute } from '@react-navigation/native';
 import {
-  Input,
-  IconButton,
-  Checkbox,
   Text,
-  Box,
-  VStack,
-  HStack,
   Stack,
   Heading,
-  Icon,
-  Image,
-  AspectRatio,
   Center,
   Avatar
 } from "native-base"

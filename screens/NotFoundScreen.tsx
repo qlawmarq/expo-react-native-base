@@ -1,16 +1,11 @@
 import * as React from "react"
 import { useNavigation } from '@react-navigation/native';
-import { DefaultLayout } from '../layout/Default'
 import {
   Box,
-  Text,
   Heading,
-  VStack,
-  FormControl,
-  Input,
   Link,
-  Button,
-  HStack,
+  Row,
+  Center
 } from "native-base"
 export default function SigninScreen(){
   const navigation = useNavigation();
@@ -18,19 +13,22 @@ export default function SigninScreen(){
     navigation.navigate('Signin')
   }
   return (
-    <DefaultLayout>
+    <Center
+      width="100%"
+      height="container"
+    >
       <Box safeArea p="2" py="8" w="90%">
         <Heading>
           404 NOT FOUND.
         </Heading>
-        <HStack mt="6" justifyContent="center">
+        <Row mt="6" justifyContent="center">
           <Link
             onPress={onPressSigninLink}
           >
             Sign in
           </Link>
-        </HStack>
+        </Row>
       </Box>
-    </DefaultLayout>
+    </Center>
   )
 }
