@@ -4,13 +4,13 @@ import {
   Box,
   FlatList,
   Avatar,
-  HStack,
-  VStack,
+  Row,
+  Column,
   Text,
   Spacer,
-  Pressable
+  Pressable,
+  Center
 } from "native-base"
-import { DefaultLayout } from '../../layout/Default'
 import { data } from './mockdata'
 
 //redux
@@ -19,7 +19,6 @@ import { RootState } from '../../lib/redux/store'
 
 export default function ListScreen() {
     const { user } = useSelector((state: RootState) => state.auth);
-    console.log(user)
     const [lists, setLists] = useState<any[]>([]);
     const navigation = useNavigation()
     const route = useRoute()
@@ -33,7 +32,10 @@ export default function ListScreen() {
         });
     }
     return (
-        <DefaultLayout>
+        <Center
+            width="100%"
+            height="container"
+        >
             <Box
             w="100%"
             >
@@ -53,21 +55,21 @@ export default function ListScreen() {
                                 pr="5"
                                 py="2"
                             >
-                                <HStack space={3} justifyContent="space-between">
+                                <Row space={3} justifyContent="space-between">
                                 <Avatar
                                     size="48px"
                                     source={{
                                     uri: item.avatarUrl
                                     }}
                                 />
-                                <VStack>
+                                <Column>
                                     <Text bold>
                                     {item.fullName}
                                     </Text>
                                     <Text>
                                     {item.message}
                                     </Text>
-                                </VStack>
+                                </Column>
                                 <Spacer />
                                 <Text
                                     fontSize="xs"
@@ -75,14 +77,14 @@ export default function ListScreen() {
                                 >
                                     {item.date}
                                 </Text>
-                                </HStack>
+                                </Row>
                             </Box>
                         </Pressable>
                     )}
                     keyExtractor={(item) => item.id}
                 />
             </Box>
-        </DefaultLayout>
+        </Center>
     )
 }
 

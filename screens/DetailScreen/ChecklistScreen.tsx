@@ -5,8 +5,8 @@ import {
   Checkbox,
   Text,
   Box,
-  VStack,
-  HStack,
+  Column,
+  Row,
   Heading,
   Icon,
 } from "native-base"
@@ -43,8 +43,8 @@ export default function ChecklistScreen(){
   return (
     <Box p={6}>
       <Heading mb="5">Checklist</Heading>
-      <VStack space={4}>
-        <HStack space={2}>
+      <Column space={4}>
+        <Row space={2}>
           <Input
             flex={1}
             onChangeText={(v) => setInputValue(v)}
@@ -62,10 +62,10 @@ export default function ChecklistScreen(){
               setInputValue("")
             }}
           />
-        </HStack>
-        <VStack space={2}>
+        </Row>
+        <Column space={2}>
           {list.map((item, itemI) => (
-            <HStack
+            <Row
               w="100%"
               justifyContent="space-between"
               alignItems="center"
@@ -100,10 +100,10 @@ export default function ChecklistScreen(){
                 }
                 onPress={() => handleDelete(itemI)}
               />
-            </HStack>
+            </Row>
           ))}
-        </VStack>
-      </VStack>
+        </Column>
+      </Column>
     </Box>
   )
 }
