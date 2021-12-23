@@ -1,5 +1,9 @@
 # React Native Base Starter App
 
+Sample application using React Native, Expo, and Native Base, and it also includes authentication features.
+
+This app was created for prototyping purposes.
+
 ## Main Features
 
  - Web/iOS/Android support
