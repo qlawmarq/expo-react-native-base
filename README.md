@@ -1,4 +1,4 @@
-# React Native Starter App
+# React Native Base Starter App
 
 ## Main Features
 
@@ -22,6 +22,10 @@
 ## Setup
 
 ### Develop
+
+This app are using `Expo CLI`, and it will be install in your local `node_modules`.
+
+Minimum setup for development is just following commands:
 
 ```bash
 npm i
@@ -60,7 +64,9 @@ https://docs.nativebase.io/button
 
 ### Theme
 
-You can customize theme with `theme.ts`.
+The theme settings of the app can be changed in `theme.ts`.
+You can customize color schema, style of component, font style, and more.
+
 Learn more about extending/customizing theme:
  - https://docs.nativebase.io/default-theme
  - https://docs.nativebase.io/customizing-theme
@@ -68,8 +74,17 @@ Learn more about extending/customizing theme:
  - https://docs.nativebase.io/utility-props#style-props
  - https://reactnavigation.org/docs/themes/
 
-Basically, it automatically sets the theme.
-But, manual setup is also possible:
+Regarding dark mode and light mode, basically, it automatically sets by user's enviroment.
+However, it is also possible to set them manually:
+
+```ts
+  import { theme } from './theme';
+  const mode = useColorScheme();
+  // you can set `dark` or `light` instead of system mode
+  theme.config.initialColorMode = mode
+```
+
+The color theme for the component will also be set automatically, but you can customize them manually:
 
 ```tsx
     <View
@@ -89,15 +104,17 @@ You can setup routing inside of `navigation` folder.
 For more information, Please check [React Navigation](https://reactnavigation.org/) website.
 
 
-### API calling
+### External API calling
 
 This app are using [Axios](https://axios-http.com/) for API calling.
-You can add your api in `lib/axios`.
+The configuration of axios is inside of `lib/axios` folder.
 
+Already, there is some example of authentification api.
+Of course, you can add your own api in `lib/axios`.
 
 ### Icon
 
-You can explore the built-in icon families and icons on the web at here:
+You can explore the built-in icon families and icons on the web at following:
 https://icons.expo.fyi/
 
 ```ts
