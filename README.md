@@ -57,7 +57,7 @@ import { RootState } from '../lib/redux/store'
 const { user, token } = useSelector((state: RootState) => state.auth);
 ```
 
-## Components
+### Components
 
 This app are using [Native Base](https://docs.nativebase.io) for base compoents.
 Please check their documents first.
