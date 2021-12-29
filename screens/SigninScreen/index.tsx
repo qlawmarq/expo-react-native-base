@@ -45,7 +45,6 @@ export default function SigninScreen(){
   return (
     <Center
       width="100%"
-      height="container"
     >
       <Box safeArea p="2" py="8" w="90%">
         <Heading>
