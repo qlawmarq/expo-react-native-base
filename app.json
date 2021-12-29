@@ -19,12 +19,12 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "au.com.panthos.fieldstream",
+      "bundleIdentifier": "com.masa.sampleapp",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.reactnative.app",
+      "package": "com.masa.sampleapp",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
