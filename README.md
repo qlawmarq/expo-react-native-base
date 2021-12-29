@@ -1,5 +1,9 @@
 # React Native Base Starter App
 
+Sample application using React Native, Expo, and Native Base, and it also includes authentication features.
+
+This app was created for prototyping purposes.
+
 ## Main Features
 
  - Web/iOS/Android support
@@ -57,7 +61,7 @@ import { RootState } from '../lib/redux/store'
 const { user, token } = useSelector((state: RootState) => state.auth);
 ```
 
-## Components
+### Components
 
 This app are using [Native Base](https://docs.nativebase.io) for base compoents.
 Please check their documents first.

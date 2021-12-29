@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ProfileScreen from './ProfileScreen';
-import ChecklistScreen from './ChecklistScreen';
-import ChatScreen from './ChatScreen';
+import ProfileScreen from '../DetailScreen/ProfileScreen';
+import ChecklistScreen from '../DetailScreen/ChecklistScreen';
+import ChatScreen from '../DetailScreen/ChatScreen';
 import { Pressable, Icon } from "native-base"
 import { Feather, Entypo } from "@expo/vector-icons"
 /**
