@@ -34,7 +34,6 @@ export default function ListScreen() {
     return (
         <Center
             width="100%"
-            height="container"
         >
             <Box
             w="100%"

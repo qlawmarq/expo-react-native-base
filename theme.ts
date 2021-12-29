@@ -47,9 +47,9 @@ export const theme: ITheme = extendTheme({
         light: light
     },
     fonts: {
-        heading: 'Open Sans, sans-serif',
-        body: 'Open Sans, sans-serif',
-        mono: 'Open Sans, sans-serif',
+        // heading: 'Open Sans, sans-serif',
+        // body: 'Open Sans, sans-serif',
+        // mono: 'Open Sans, sans-serif',
     },
     components: {
         Heading: {

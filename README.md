@@ -27,7 +27,7 @@ This app was created for prototyping purposes.
 
 ### Develop
 
-This app are using `Expo CLI`, and it will be install in your local `node_modules`.
+This app are using Expo, and it will be install in your local `node_modules`.
 
 Minimum setup for development is just following commands:
 
@@ -36,8 +36,12 @@ npm i
 npm run start
 ```
 
+Now you are ready to develop your app, and you can check your app in a web browser or in the simulator of iOS/Android OS.
+
 Please check here for deatils:
 https://reactnative.dev/docs/environment-setup
+https://docs.expo.dev/get-started/installation/
+https://docs.expo.dev/get-started/errors/
 
 ## Guide
 
@@ -130,6 +134,40 @@ export default function Example() {
   )
 }
 ```
+
+### About Expo
+
+This app is using Expo to make your development easier and faster.
+Also it make easily publish testing app with using Expo.
+
+Expo is a framework and a platform for universal React applications. It is a set of tools and services built around React Native and native platforms that help you develop, build, deploy, and quickly iterate on iOS, Android, and web apps from the same JavaScript/TypeScript codebase.
+
+For more informations, please check [Expo.dev](https://docs.expo.dev/).
+
+### Publish a internal testing app to Expo
+
+Firstly, please make sure that you already have [Expo account](https://expo.dev/).
+
+Run following command:
+
+```bash
+npm run login
+```
+
+For publishing app, run following command:
+
+```bash
+npm run publish
+```
+
+If the app is successfully published to Expo, you can see the app informations in your Expo dashboard.
+
+After publishing is completed, please install the Expo App on your mobile device:
+https://apps.apple.com/en/app/expo-go/
+https://play.google.com/store/apps/details?id=host.exp.exponent
+
+After installation, login with your account.
+Now you can test the app on your device.
 
 ### Another libraries
 

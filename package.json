@@ -4,9 +4,14 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "start:production": "expo start --no-dev --minify",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "login": "expo login",
+    "build:ios": "expo build:ios",
+    "build:android": "expo build:android",
+    "publish": "expo publish",
     "eject": "expo eject",
     "test": "jest --watchAll"
   },
@@ -32,10 +37,11 @@
     "native-base": "3.2.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-native": "0.66.4",
+    "react-native": "0.64.3",
     "react-native-gifted-chat": "0.16.3",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.10.1",
+    "react-native-svg": "12.1.1",
     "react-native-web": "0.17.5",
     "react-redux": "7.2.6",
     "redux-persist": "6.0.0"
