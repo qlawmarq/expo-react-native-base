@@ -21,7 +21,7 @@ import SignupScreen from '../screens/SignupScreen';
 import ListScreen from '../screens/ListScreen';
 import NotfoundScreen from '../screens/NotFoundScreen';
 import DetailScreen from '../screens/DetailScreen';
-import ChatScreen from '../screens/ChatScreen';
+import ConfigurationScreen from '../screens/ConfigurationScreen';
 
 // type
 import { RootStackParamList } from './types';
@@ -62,7 +62,7 @@ export default function Navigator({theme}: {theme: ITheme}) {
               headerShown: true,
               headerLeft: (() => null),
               headerRight: (() => {
-                return <Pressable mr={10} onPress={()=> navigation.navigate('Chat')}><Icon as={Feather} name="message-square" size="sm" /></Pressable>
+                return <Pressable mr={10} onPress={()=> navigation.navigate('Configuration')}><Icon as={Feather} name="settings" size="sm" /></Pressable>
               })
             })}
           />
@@ -75,10 +75,10 @@ export default function Navigator({theme}: {theme: ITheme}) {
             })}
           />
           <Stack.Screen
-            name="Chat"
-            component={ChatScreen}
+            name="Configuration"
+            component={ConfigurationScreen}
             options={({ navigation }) => ({
-              title: 'Chat',
+              title: 'Configuration',
               headerShown: true
             })}
           />
@@ -134,7 +134,7 @@ export default function Navigator({theme}: {theme: ITheme}) {
        Signup: 'signup',
        List: 'list',
        Detail: 'detail',
-       Chat: 'chat',
+       Configuration: 'configuration',
        NotFound: '*',
      },
    },

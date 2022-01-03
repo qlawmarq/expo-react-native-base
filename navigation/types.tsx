@@ -10,6 +10,6 @@ export type RootStackParamList = {
   Signup: undefined;
   List: undefined;
   Detail: undefined;
-  Chat: undefined;
+  Configuration: undefined;
 };
 
