@@ -26,7 +26,7 @@
     "@react-navigation/native-stack": "6.2.5",
     "@reduxjs/toolkit": "1.7.1",
     "axios": "0.24.0",
-    "expo": "44.0.1",
+    "expo": "44.0.4",
     "expo-asset": "8.4.5",
     "expo-constants": "13.0.0",
     "expo-font": "10.0.4",
