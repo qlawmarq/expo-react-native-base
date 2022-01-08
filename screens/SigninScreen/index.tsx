@@ -17,27 +17,41 @@ import {
   Link,
   Button,
   Row,
-  Center
+  Center,
+  Checkbox,
+  Spacer
 } from "native-base"
 
 //redux
-import { useDispatch } from 'react-redux';
-import { setUser, setToken } from "../../lib/redux/slices/authSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, setToken, setLoginEmail } from "../../lib/redux/reducers/authReducer";
 
 export default function SigninScreen(){
   const dispatch = useDispatch();
+  const { loginInfo } = useSelector((state: RootState) => state.auth);
   const [email, onChangeEmail] = React.useState("");
   const [password, onChangePassword] = React.useState("");
+  const [rememberMe, setRememberMe] = React.useState(!!loginInfo?.email)
   const navigation = useNavigation();
   const onPressSigninButton = async () => {
-    const values = {
-      email,
-      password
+    try {
+      const values = {
+        email,
+        password
+      }
+      const res = await ApiService.signin(values)
+      dispatch(setUser(res.data.user));
+      dispatch(setToken(res.data.token));
+      if(rememberMe){
+        dispatch(setLoginEmail({
+          email: email,
+          password: password
+        }))
+      }
+      navigation.navigate('List')
+    } catch (error) {
+      console.warn(error)
     }
-    const res = await ApiService.signin(values)
-    dispatch(setUser(res.data.user));
-    dispatch(setToken(res.data.token));
-    navigation.navigate('List')
   }
   const onPressSignupLink = async () => {
     navigation.navigate('Signup')
@@ -58,13 +72,19 @@ export default function SigninScreen(){
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
             <Input value={password} onChangeText={onChangePassword} type="password" />
-            {/* <Link
-              alignSelf="flex-end"
-              mt="1"
-            >
-              Forget Password?
-            </Link> */}
           </FormControl>
+          <Row space={3} width="100%">
+            <Checkbox value="" isChecked={rememberMe} onChange={setRememberMe}>
+              Remember me
+            </Checkbox>
+            <Spacer />
+            <Link
+                href={`https://your.app.web/forgot-password`}
+                isExternal
+              >
+                Forget Password?
+            </Link>
+          </Row>
           <Button onPress={onPressSigninButton} mt="2">
             Sign in
           </Button>

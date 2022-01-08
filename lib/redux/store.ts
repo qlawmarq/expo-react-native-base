@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit'
-import authReducer from './slices/authSlice';
+import authReducer from './reducers/authReducer';
 import {
   FLUSH,
   PAUSE,
