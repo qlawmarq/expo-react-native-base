@@ -9,7 +9,7 @@ export type RootStackParamList = {
   Signin: undefined;
   Signup: undefined;
   List: undefined;
-  Detail: undefined;
-  Configuration: undefined;
+  Detail: {screen: 'Profile' | 'Checklist' | 'Chat', params: any};
+  Settings: undefined;
 };
 

@@ -21,7 +21,7 @@ import SignupScreen from '../screens/SignupScreen';
 import ListScreen from '../screens/ListScreen';
 import NotfoundScreen from '../screens/NotFoundScreen';
 import DetailScreen from '../screens/DetailScreen';
-import ConfigurationScreen from '../screens/ConfigurationScreen';
+import ConfigurationScreen from '../screens/SettingsScreen';
 
 // type
 import { RootStackParamList } from './types';
@@ -134,7 +134,7 @@ export default function Navigator({theme}: {theme: ITheme}) {
        Signup: 'signup',
        List: 'list',
        Detail: 'detail',
-       Configuration: 'configuration',
+       Settings: 'settings',
        NotFound: '*',
      },
    },

@@ -1,8 +1,5 @@
 import * as React from "react"
 
-//router
-import { useNavigation } from '@react-navigation/native';
-
 // api
 import { ApiService } from '../../lib/axios'
 
@@ -25,14 +22,20 @@ import {
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setToken, setLoginEmail } from "../../lib/redux/reducers/authReducer";
+import { RootState } from "../../lib/redux/store";
 
-export default function SigninScreen(){
+// navigation
+import { RootStackParamList } from '../../navigation/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Signin'>;
+
+export default function SigninScreen(props: Props){
   const dispatch = useDispatch();
   const { loginInfo } = useSelector((state: RootState) => state.auth);
   const [email, onChangeEmail] = React.useState("");
   const [password, onChangePassword] = React.useState("");
   const [rememberMe, setRememberMe] = React.useState(!!loginInfo?.email)
-  const navigation = useNavigation();
   const onPressSigninButton = async () => {
     try {
       const values = {
@@ -48,13 +51,13 @@ export default function SigninScreen(){
           password: password
         }))
       }
-      navigation.navigate('List')
+      props.navigation.navigate('List')
     } catch (error) {
       console.warn(error)
     }
   }
   const onPressSignupLink = async () => {
-    navigation.navigate('Signup')
+    props.navigation.navigate('Signup')
   }
   return (
     <Center

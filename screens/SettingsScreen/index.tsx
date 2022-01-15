@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useNavigation } from '@react-navigation/native';
 import { ApiService } from '../../lib/axios'
 import {
   Box,
@@ -13,13 +12,19 @@ import {
   Row,
   Center
 } from "native-base"
-export default function SignupScreen(){
+
+// navigation
+import { RootStackParamList } from '../../navigation/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
+
+export default function SettingsScreen(props:Props){
   const [email, onChangeEmail] = React.useState("");
   const [firstName, onChangeFirstName] = React.useState("");
   const [lastName, onChangeLastName] = React.useState("");
   const [password, onChangePassword] = React.useState("");
-  const navigation = useNavigation();
-  const onPressSignup = async () => {
+  const onPressUpdate = async () => {
     // const values = {
     //   email,
     //   password,
@@ -28,7 +33,7 @@ export default function SignupScreen(){
     // }
     // const res = await ApiService.updateUser(values)
     // console.log(res)
-    navigation.navigate('List')
+    props.navigation.navigate('List')
   }
   return (
     <Center
@@ -55,7 +60,7 @@ export default function SignupScreen(){
             <FormControl.Label>Password</FormControl.Label>
             <Input value={password} onChangeText={onChangePassword} type="password" />
           </FormControl>
-          <Button onPress={onPressSignup} mt="2">
+          <Button onPress={onPressUpdate} mt="2">
             Update
           </Button>
         </Column>

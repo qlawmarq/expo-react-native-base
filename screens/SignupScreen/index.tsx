@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useNavigation } from '@react-navigation/native';
 import { ApiService } from '../../lib/axios'
 import {
   Box,
@@ -13,12 +12,18 @@ import {
   Row,
   Center
 } from "native-base"
-export default function SignupScreen(){
+
+// navigation
+import { RootStackParamList } from '../../navigation/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>;
+
+export default function SignupScreen(props: Props){
   const [email, onChangeEmail] = React.useState("");
   const [firstName, onChangeFirstName] = React.useState("");
   const [lastName, onChangeLastName] = React.useState("");
   const [password, onChangePassword] = React.useState("");
-  const navigation = useNavigation();
   const onPressSignup = async () => {
     // const values = {
     //   email,
@@ -26,10 +31,10 @@ export default function SignupScreen(){
     // }
     // const res = await ApiService.Signup(values)
     // console.log(res)
-    navigation.navigate('Signin')
+    props.navigation.navigate('Signin')
   }
   const onPressSigninLink = async () => {
-    navigation.navigate('Signin')
+    props.navigation.navigate('Signin')
   }
   return (
     <Center
