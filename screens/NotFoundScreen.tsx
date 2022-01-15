@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useNavigation } from '@react-navigation/native';
 import {
   Box,
   Heading,
@@ -7,10 +6,15 @@ import {
   Row,
   Center
 } from "native-base"
-export default function SigninScreen(){
-  const navigation = useNavigation();
+// navigation
+import { RootStackParamList } from '../navigation/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type Props = NativeStackScreenProps<RootStackParamList, 'NotFound'>;
+
+export default function SigninScreen(props: Props){
   const onPressSigninLink = async () => {
-    navigation.navigate('Signin')
+    props.navigation.navigate('Signin')
   }
   return (
     <Center
