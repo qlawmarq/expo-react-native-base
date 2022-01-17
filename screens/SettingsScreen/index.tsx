@@ -1,29 +1,18 @@
-import * as React from "react"
-import { ApiService } from '../../lib/axios'
-import {
-  Box,
-  Text,
-  Heading,
-  Column,
-  FormControl,
-  Input,
-  Link,
-  Button,
-  Row,
-  Center
-} from "native-base"
+import * as React from 'react';
+// import { ApiService } from '../../lib/axios';
+import { Box, Heading, Column, FormControl, Input, Button, Center } from 'native-base';
 
 // navigation
-import { RootStackParamList } from '../../navigation/types'
+import { RootStackParamList } from '../../navigation/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
-export default function SettingsScreen(props:Props){
-  const [email, onChangeEmail] = React.useState("");
-  const [firstName, onChangeFirstName] = React.useState("");
-  const [lastName, onChangeLastName] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+export default function SettingsScreen(props: Props) {
+  const [email, onChangeEmail] = React.useState('');
+  const [firstName, onChangeFirstName] = React.useState('');
+  const [lastName, onChangeLastName] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
   const onPressUpdate = async () => {
     // const values = {
     //   email,
@@ -33,28 +22,24 @@ export default function SettingsScreen(props:Props){
     // }
     // const res = await ApiService.updateUser(values)
     // console.log(res)
-    props.navigation.navigate('List')
-  }
+    props.navigation.navigate('List');
+  };
   return (
-    <Center
-      width="100%"
-    >
+    <Center width="100%">
       <Box safeArea p="2" py="8" w="90%">
-        <Heading>
-          Update your account
-        </Heading>
+        <Heading>Update your account</Heading>
         <Column space={3} mt="5">
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
-            <Input value={email} onChangeText={onChangeEmail} type="email"/>
+            <Input value={email} onChangeText={onChangeEmail} type="email" />
           </FormControl>
           <FormControl>
             <FormControl.Label>First Name</FormControl.Label>
-            <Input value={firstName} onChangeText={onChangeFirstName}/>
+            <Input value={firstName} onChangeText={onChangeFirstName} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Last Name</FormControl.Label>
-            <Input value={lastName} onChangeText={onChangeLastName}/>
+            <Input value={lastName} onChangeText={onChangeLastName} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
@@ -66,5 +51,5 @@ export default function SettingsScreen(props:Props){
         </Column>
       </Box>
     </Center>
-  )
+  );
 }

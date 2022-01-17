@@ -12,8 +12,8 @@ import * as React from 'react';
  * https://reactnavigation.org/docs/themes/
  */
 // theme
-import { ITheme } from "native-base"
-import { navDarkTheme, navLightTheme } from '../theme'
+import { ITheme } from 'native-base';
+import { navDarkTheme, navLightTheme } from '../theme';
 
 // routing
 import SigninScreen from '../screens/SigninScreen';
@@ -27,31 +27,31 @@ import ConfigurationScreen from '../screens/SettingsScreen';
 import { RootStackParamList } from './types';
 
 // components
-import { Pressable, Icon } from "native-base"
-import { Feather } from "@expo/vector-icons"
+import { Pressable, Icon } from 'native-base';
+import { Feather } from '@expo/vector-icons';
 
 // state(redux)
 import { useSelector } from 'react-redux';
-import { RootState } from '../lib/redux/store'
+import { RootState } from '../lib/redux/store';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default function Navigator({theme}: {theme: ITheme}) {
+export default function Navigator({ theme }: { theme: ITheme }) {
   const { user, token } = useSelector((state: RootState) => state.auth);
 
   return (
-    <NavigationContainer theme={theme.config?.initialColorMode === 'dark' ? navDarkTheme : navLightTheme}>
-      {(user && token) ? (
+    <NavigationContainer
+      theme={theme.config?.initialColorMode === 'dark' ? navDarkTheme : navLightTheme}
+    >
+      {user && token ? (
         // Authenticated users rooting
-        <Stack.Navigator
-          initialRouteName="List"
-        >
+        <Stack.Navigator initialRouteName="List">
           <Stack.Screen
-            name="NotFound" 
-            component={NotfoundScreen} 
+            name="NotFound"
+            component={NotfoundScreen}
             options={() => ({
               title: 'NotFound',
-              headerShown: false
+              headerShown: false,
             })}
           />
           <Stack.Screen
@@ -60,10 +60,14 @@ export default function Navigator({theme}: {theme: ITheme}) {
             options={({ navigation }) => ({
               title: 'List',
               headerShown: true,
-              headerLeft: (() => null),
-              headerRight: (() => {
-                return <Pressable mr={10} onPress={()=> navigation.navigate('Configuration')}><Icon as={Feather} name="settings" size="sm" /></Pressable>
-              })
+              headerLeft: () => null,
+              headerRight: () => {
+                return (
+                  <Pressable mr={10} onPress={() => navigation.navigate('Configuration')}>
+                    <Icon as={Feather} name="settings" size="sm" />
+                  </Pressable>
+                );
+              },
             })}
           />
           <Stack.Screen
@@ -71,29 +75,27 @@ export default function Navigator({theme}: {theme: ITheme}) {
             component={DetailScreen}
             options={() => ({
               title: 'Detail',
-              headerShown: true
+              headerShown: true,
             })}
           />
           <Stack.Screen
-            name="Configuration"
+            name="Settings"
             component={ConfigurationScreen}
             options={({ navigation }) => ({
-              title: 'Configuration',
-              headerShown: true
+              title: 'Settings',
+              headerShown: true,
             })}
           />
         </Stack.Navigator>
       ) : (
         // NOT authenticated users rooting
-        <Stack.Navigator
-          initialRouteName="Signin"
-        >
+        <Stack.Navigator initialRouteName="Signin">
           <Stack.Screen
-            name="NotFound" 
-            component={NotfoundScreen} 
+            name="NotFound"
+            component={NotfoundScreen}
             options={() => ({
               title: 'NotFound',
-              headerShown: false
+              headerShown: false,
             })}
           />
           <Stack.Screen
@@ -101,7 +103,7 @@ export default function Navigator({theme}: {theme: ITheme}) {
             component={SigninScreen}
             options={() => ({
               title: 'Signin',
-              headerShown: false
+              headerShown: false,
             })}
           />
           <Stack.Screen
@@ -109,7 +111,7 @@ export default function Navigator({theme}: {theme: ITheme}) {
             component={SignupScreen}
             options={() => ({
               title: 'Signup',
-              headerShown: false
+              headerShown: false,
             })}
           />
         </Stack.Navigator>
@@ -123,21 +125,19 @@ export default function Navigator({theme}: {theme: ITheme}) {
  * https://reactnavigation.org/docs/deep-linking
  * https://reactnavigation.org/docs/configuring-links
  */
- import { LinkingOptions } from '@react-navigation/native';
- import * as Linking from 'expo-linking';
- 
- const linking: LinkingOptions<RootStackParamList> = {
-   prefixes: [Linking.makeUrl('/')],
-   config: {
-     screens: {
-       Signin: 'signin',
-       Signup: 'signup',
-       List: 'list',
-       Detail: 'detail',
-       Settings: 'settings',
-       NotFound: '*',
-     },
-   },
- };
- 
- 
+import { LinkingOptions } from '@react-navigation/native';
+import * as Linking from 'expo-linking';
+
+const linking: LinkingOptions<RootStackParamList> = {
+  prefixes: [Linking.makeUrl('/')],
+  config: {
+    screens: {
+      Signin: 'signin',
+      Signup: 'signup',
+      List: 'list',
+      Detail: 'detail',
+      Settings: 'settings',
+      NotFound: '*',
+    },
+  },
+};

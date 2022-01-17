@@ -1,7 +1,7 @@
-import * as React from "react"
+import * as React from 'react';
 
 // api
-import { ApiService } from '../../lib/axios'
+import { ApiService } from '../../lib/axios';
 
 //components
 import {
@@ -16,61 +16,59 @@ import {
   Row,
   Center,
   Checkbox,
-  Spacer
-} from "native-base"
+  Spacer,
+} from 'native-base';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, setToken, setLoginEmail } from "../../lib/redux/reducers/authReducer";
-import { RootState } from "../../lib/redux/store";
+import { setUser, setToken, setLoginEmail } from '../../lib/redux/reducers/authReducer';
+import { RootState } from '../../lib/redux/store';
 
 // navigation
-import { RootStackParamList } from '../../navigation/types'
+import { RootStackParamList } from '../../navigation/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Signin'>;
 
-export default function SigninScreen(props: Props){
+export default function SigninScreen(props: Props) {
   const dispatch = useDispatch();
   const { loginInfo } = useSelector((state: RootState) => state.auth);
-  const [email, onChangeEmail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
-  const [rememberMe, setRememberMe] = React.useState(!!loginInfo?.email)
+  const [email, onChangeEmail] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+  const [rememberMe, setRememberMe] = React.useState(!!loginInfo?.email);
   const onPressSigninButton = async () => {
     try {
       const values = {
         email,
-        password
-      }
-      const res = await ApiService.signin(values)
+        password,
+      };
+      const res = await ApiService.signin(values);
       dispatch(setUser(res.data.user));
       dispatch(setToken(res.data.token));
-      if(rememberMe){
-        dispatch(setLoginEmail({
-          email: email,
-          password: password
-        }))
+      if (rememberMe) {
+        dispatch(
+          setLoginEmail({
+            email: email,
+            password: password,
+          })
+        );
       }
-      props.navigation.navigate('List')
+      props.navigation.navigate('List');
     } catch (error) {
-      console.warn(error)
+      console.warn(error);
     }
-  }
+  };
   const onPressSignupLink = async () => {
-    props.navigation.navigate('Signup')
-  }
+    props.navigation.navigate('Signup');
+  };
   return (
-    <Center
-      width="100%"
-    >
+    <Center width="100%">
       <Box safeArea p="2" py="8" w="90%">
-        <Heading>
-          Welcome
-        </Heading>
+        <Heading>Welcome</Heading>
         <Column space={3} mt="5">
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
-            <Input value={email} onChangeText={onChangeEmail} type="email"/>
+            <Input value={email} onChangeText={onChangeEmail} type="email" />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
@@ -81,28 +79,19 @@ export default function SigninScreen(props: Props){
               Remember me
             </Checkbox>
             <Spacer />
-            <Link
-                href={`https://your.app.web/forgot-password`}
-                isExternal
-              >
-                Forget Password?
+            <Link href={'https://your.app.web/forgot-password'} isExternal>
+              Forget Password?
             </Link>
           </Row>
           <Button onPress={onPressSigninButton} mt="2">
             Sign in
           </Button>
           <Row mt="6" justifyContent="center">
-            <Text>
-              I'm a new user.{" "}
-            </Text>
-            <Link
-              onPress={onPressSignupLink}
-            >
-              Sign Up
-            </Link>
+            <Text>I&apos;m a new user. </Text>
+            <Link onPress={onPressSignupLink}>Sign Up</Link>
           </Row>
         </Column>
       </Box>
     </Center>
-  )
+  );
 }

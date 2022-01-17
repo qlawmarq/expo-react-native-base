@@ -1,21 +1,21 @@
 export const checklistData = [
   {
-    title: "Code",
+    title: 'Code',
     isCompleted: true,
   },
   {
-    title: "Meeting with team at 9",
+    title: 'Meeting with team at 9',
     isCompleted: false,
   },
   {
-    title: "Check Emails",
+    title: 'Check Emails',
     isCompleted: false,
   },
   {
-    title: "Write an article",
+    title: 'Write an article',
     isCompleted: false,
   },
-]
+];
 export const chatData = [
   {
     _id: 1,
@@ -27,4 +27,4 @@ export const chatData = [
       avatar: 'https://placeimg.com/140/140/any',
     },
   },
-]
+];
