@@ -1,22 +1,11 @@
-import React from "react"
-import {
-  Input,
-  IconButton,
-  Checkbox,
-  Text,
-  Box,
-  Column,
-  Row,
-  Heading,
-  Icon,
-} from "native-base"
-import { Feather, Entypo } from "@expo/vector-icons"
-import { checklistData } from './mockdata'
+import React from 'react';
+import { Input, IconButton, Checkbox, Text, Box, Column, Row, Heading, Icon } from 'native-base';
+import { Feather, Entypo } from '@expo/vector-icons';
+import { checklistData } from './mockdata';
 
-export default function ChecklistScreen(){
-
-  const [list, setList] = React.useState(checklistData)
-  const [inputValue, setInputValue] = React.useState("")
+export default function ChecklistScreen() {
+  const [list, setList] = React.useState(checklistData);
+  const [inputValue, setInputValue] = React.useState('');
 
   const addItem = (title: string) => {
     setList([
@@ -25,20 +14,20 @@ export default function ChecklistScreen(){
         title: title,
         isCompleted: false,
       },
-    ])
-  }
+    ]);
+  };
 
   const handleDelete = (index: number) => {
-    const temp = list.filter((_, itemI) => itemI !== index)
-    setList(temp)
-  }
+    const temp = list.filter((_, itemI) => itemI !== index);
+    setList(temp);
+  };
 
   const handleStatusChange = (index: number) => {
     const temp = list.map((item, itemI) =>
       itemI !== index ? item : { ...item, isCompleted: !item.isCompleted }
-    )
-    setList(temp)
-  }
+    );
+    setList(temp);
+  };
 
   return (
     <Box p={6}>
@@ -54,12 +43,10 @@ export default function ChecklistScreen(){
           <IconButton
             borderRadius="sm"
             variant="solid"
-            icon={
-              <Icon as={Feather} name="plus" size="sm" color="warmGray.50" />
-            }
+            icon={<Icon as={Feather} name="plus" size="sm" color="warmGray.50" />}
             onPress={() => {
-              addItem(inputValue)
-              setInputValue("")
+              addItem(inputValue);
+              setInputValue('');
             }}
           />
         </Row>
@@ -80,10 +67,10 @@ export default function ChecklistScreen(){
                   mx="2"
                   strikeThrough={item.isCompleted}
                   _light={{
-                    color: item.isCompleted ? "gray.400" : "coolGray.800",
+                    color: item.isCompleted ? 'gray.400' : 'coolGray.800',
                   }}
                   _dark={{
-                    color: item.isCompleted ? "gray.400" : "coolGray.50",
+                    color: item.isCompleted ? 'gray.400' : 'coolGray.50',
                   }}
                 >
                   {item.title}
@@ -91,13 +78,7 @@ export default function ChecklistScreen(){
               </Checkbox>
               <IconButton
                 size="sm"
-                icon={
-                  <Icon
-                    as={Entypo}
-                    name="minus"
-                    size="xs"
-                  />
-                }
+                icon={<Icon as={Entypo} name="minus" size="xs" />}
                 onPress={() => handleDelete(itemI)}
               />
             </Row>
@@ -105,5 +86,5 @@ export default function ChecklistScreen(){
         </Column>
       </Column>
     </Box>
-  )
+  );
 }

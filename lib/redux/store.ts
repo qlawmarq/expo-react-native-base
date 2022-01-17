@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from '@reduxjs/toolkit'
+import { combineReducers } from '@reduxjs/toolkit';
 import authReducer from './reducers/authReducer';
 import {
   FLUSH,
@@ -37,5 +37,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
- 
-export type RootState = ReturnType<typeof reducers>
+
+export type RootState = ReturnType<typeof reducers>;

@@ -2,22 +2,21 @@
 
 ## Main Features
 
- - Web/iOS/Android support
- - Dark/Light theme support
- - Chat view by [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
+- Web/iOS/Android support
+- Dark/Light theme support
+- Chat view by [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
 
 ## Main libraries
 
- - [React Native](https://reactnative.dev/)
- - [Expo](https://expo.dev/)
- - [React Navigation](https://reactnavigation.org/)
- - [Native Base](https://nativebase.io/)
- - [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
- - [Axios](https://axios-http.com/)
- - [Redux(toolkit)](https://redux-toolkit.js.org/)
- - [Redux Persist](https://github.com/rt2zz/redux-persist)
- - [Async Storage](https://react-native-async-storage.github.io/async-storage/)
-
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [React Navigation](https://reactnavigation.org/)
+- [Native Base](https://nativebase.io/)
+- [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
+- [Axios](https://axios-http.com/)
+- [Redux(toolkit)](https://redux-toolkit.js.org/)
+- [Redux Persist](https://github.com/rt2zz/redux-persist)
+- [Async Storage](https://react-native-async-storage.github.io/async-storage/)
 
 ## Development
 
@@ -86,18 +85,17 @@ You can set the name of the app, version, permissions, etc. through `app.json`.
 
 https://docs.expo.dev/versions/latest/config/app/
 
-
 ### State/Storage
 
 This app are using [Redux(toolkit)](https://redux-toolkit.js.org/) for state management, and [Redux Persist](https://github.com/rt2zz/redux-persist) for persisting store's state when app reload.  
 And also using [Async Storage](https://react-native-async-storage.github.io/async-storage/) for data storage.
 
-
 Here is an example case of getting stored data:
+
 ```ts
 // state(redux)
 import { useSelector } from 'react-redux';
-import { RootState } from '../lib/redux/store'
+import { RootState } from '../lib/redux/store';
 
 // get user & token from redux
 const { user, token } = useSelector((state: RootState) => state.auth);
@@ -111,48 +109,46 @@ Please check their documents first.
 For example, if you want to use `Button` component, check here:
 https://docs.nativebase.io/button
 
-
 ### Theme
 
 The theme settings of the app can be changed in `theme.ts`.
 You can customize color schema, style of component, font style, and more.
 
 Learn more about extending/customizing theme:
- - https://docs.nativebase.io/default-theme
- - https://docs.nativebase.io/customizing-theme
- - https://docs.nativebase.io/customizing-components
- - https://docs.nativebase.io/utility-props#style-props
- - https://reactnavigation.org/docs/themes/
+
+- https://docs.nativebase.io/default-theme
+- https://docs.nativebase.io/customizing-theme
+- https://docs.nativebase.io/customizing-components
+- https://docs.nativebase.io/utility-props#style-props
+- https://reactnavigation.org/docs/themes/
 
 Regarding dark mode and light mode, basically, it automatically sets by user's enviroment.
 However, it is also possible to set them manually:
 
 ```ts
-  import { theme } from './theme';
-  const mode = useColorScheme();
-  // you can set `dark` or `light` instead of system mode
-  theme.config.initialColorMode = mode
+import { theme } from './theme';
+const mode = useColorScheme();
+// you can set `dark` or `light` instead of system mode
+theme.config.initialColorMode = mode;
 ```
 
 The color theme for the component will also be set automatically, but you can customize them manually:
 
 ```tsx
-    <View
-        _light={{
-            borderColor: "light.border"
-        }}
-        _dark={{
-            borderColor: "dark.border"
-        }}
-    />
+<View
+  _light={{
+    borderColor: 'light.border',
+  }}
+  _dark={{
+    borderColor: 'dark.border',
+  }}
+/>
 ```
-
 
 ### Navigation
 
 You can setup routing inside of `navigation` folder.
 For more information, Please check [React Navigation](https://reactnavigation.org/) website.
-
 
 ### External API calling
 
@@ -168,12 +164,10 @@ You can explore the built-in icon families and icons on the web at following:
 https://icons.expo.fyi/
 
 ```ts
-import { Icon } from "native-base"
-import { Feather } from "@expo/vector-icons"
+import { Icon } from 'native-base';
+import { Feather } from '@expo/vector-icons';
 export default function Example() {
-  return (
-    <Icon as={Feather} name="message-square" size="sm" />
-  )
+  return <Icon as={Feather} name="message-square" size="sm" />;
 }
 ```
 
@@ -181,4 +175,3 @@ export default function Example() {
 
 Please search here:
 https://reactnative.directory/popular
-
