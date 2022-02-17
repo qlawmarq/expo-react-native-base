@@ -27,9 +27,6 @@ import ConfigurationScreen from '../screens/SettingsScreen';
 import { RootStackParamList } from './types';
 
 // components
-import { Pressable, Icon } from 'native-base';
-import { Feather } from '@expo/vector-icons';
-
 import { NavMenu } from './NavigationMenu';
 
 // state(redux)
