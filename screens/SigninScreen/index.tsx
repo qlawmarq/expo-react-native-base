@@ -37,8 +37,8 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Signin'>;
 export default function SigninScreen(props: Props) {
   const dispatch = useDispatch();
   const { loginInfo } = useSelector((state: RootState) => state.auth);
-  const [email, onChangeEmail] = React.useState('');
-  const [password, onChangePassword] = React.useState('');
+  const [email, onChangeEmail] = React.useState(loginInfo?.email);
+  const [password, onChangePassword] = React.useState(loginInfo?.password);
   const [rememberMe, setRememberMe] = React.useState(!!loginInfo?.email);
   const onPressSigninButton = async () => {
     try {
