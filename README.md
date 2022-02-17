@@ -20,7 +20,7 @@
 
 ## API Server & DB Server
 
-If you need Please API & DB Server for development, you can clone from following:
+If you need an API and DB server for development, please clone from the following:
 
 https://github.com/masaiborg/fastapi-mysql-docker
 
