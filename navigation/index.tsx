@@ -41,7 +41,9 @@ export default function Navigator({ theme }: { theme: ITheme }) {
 
   return (
     <NavigationContainer
-      theme={theme.config?.initialColorMode === 'dark' ? navDarkTheme : navLightTheme}
+      theme={
+        theme.config?.initialColorMode === 'dark' ? navDarkTheme : navLightTheme
+      }
     >
       {user && token ? (
         // Authenticated users rooting
@@ -63,7 +65,10 @@ export default function Navigator({ theme }: { theme: ITheme }) {
               headerLeft: () => null,
               headerRight: () => {
                 return (
-                  <Pressable mr={10} onPress={() => navigation.navigate('Configuration')}>
+                  <Pressable
+                    mr={10}
+                    onPress={() => navigation.navigate('Settings')}
+                  >
                     <Icon as={Feather} name="settings" size="sm" />
                   </Pressable>
                 );

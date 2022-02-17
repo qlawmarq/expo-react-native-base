@@ -7,7 +7,7 @@ import {
   Actions,
   ActionsProps,
 } from 'react-native-gifted-chat';
-import { Icon, Spinner } from 'native-base';
+import { Column, Badge, Icon, Spinner } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 // redux
@@ -21,7 +21,7 @@ export default function ChatScreen() {
   // const { user, token } = useSelector((state: RootState) => state.auth);
   const [isSending, setIsSending] = useState(false);
   const [messages, setMessages] = useState<IMessage[]>([]);
-  const [imageUri, setImageUri] = useState('');
+  const [imageUri, setImageUri] = useState<string>();
 
   const getChat = async () => {
     // call API to get chat here
@@ -38,13 +38,34 @@ export default function ChatScreen() {
       quality: 1,
     });
     if (!result.cancelled && result?.base64) {
-      console.log(result?.base64);
       setImageUri(result?.base64);
     }
   };
 
   const renderActions = (props: Readonly<ActionsProps>) => {
-    return <Actions {...props} icon={() => <Icon as={Feather} name="image" size="sm" />} />;
+    return (
+      <Actions
+        {...props}
+        icon={() => (
+          <Column position="relative">
+            {imageUri && (
+              <Icon
+                position="absolute"
+                mt={-2}
+                mr={-3}
+                color="red.500"
+                zIndex={1}
+                alignSelf="flex-end"
+                as={Feather}
+                name="check"
+                size="xs"
+              />
+            )}
+            <Icon position="absolute" color="primary.500" as={Feather} name="image" size="sm" />
+          </Column>
+        )}
+      />
+    );
   };
   const renderSend = (props: Readonly<SendProps<IMessage>>) => {
     if (isSending) {
@@ -60,14 +81,19 @@ export default function ChatScreen() {
           marginRight: 10,
         }}
       >
-        <Icon as={Feather} name="send" size="sm" />
+        <Icon as={Feather} color="primary.500" name="send" size="sm" />
       </Send>
     );
   };
 
   const onSend = async (messages: IMessage[]) => {
     setIsSending(true);
-    setMessages((previousMessages) => GiftedChat.append(previousMessages, messages));
+    if (imageUri) {
+      messages[0].image = 'data:image/png;base64,' + imageUri;
+    }
+    setMessages((previousMessages) =>
+      GiftedChat.append(previousMessages, messages)
+    );
     // call API to send message
     setIsSending(false);
   };

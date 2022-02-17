@@ -1,5 +1,15 @@
 import React from 'react';
-import { Input, IconButton, Checkbox, Text, Box, Column, Row, Heading, Icon } from 'native-base';
+import {
+  Input,
+  IconButton,
+  Checkbox,
+  Text,
+  Box,
+  Column,
+  Row,
+  Heading,
+  Icon,
+} from 'native-base';
 import { Feather, Entypo } from '@expo/vector-icons';
 import { checklistData } from './mockdata';
 
@@ -43,7 +53,9 @@ export default function ChecklistScreen() {
           <IconButton
             borderRadius="sm"
             variant="solid"
-            icon={<Icon as={Feather} name="plus" size="sm" color="warmGray.50" />}
+            icon={
+              <Icon as={Feather} name="plus" size="sm" color="warmGray.50" />
+            }
             onPress={() => {
               addItem(inputValue);
               setInputValue('');

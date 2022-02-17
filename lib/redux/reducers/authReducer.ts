@@ -15,7 +15,7 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
     setToken(state, action: PayloadAction<any>) {
-      state.user = action.payload;
+      state.token = action.payload;
     },
     setLoginEmail(state, action: PayloadAction<any>) {
       state.loginInfo = action.payload;

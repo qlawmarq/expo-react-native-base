@@ -1,11 +1,16 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { useRoute } from '@react-navigation/native';
-import { Box, FlatList, Avatar, Row, Column, Text, Spacer, Pressable, Center } from 'native-base';
+import React, { useState } from 'react';
+import {
+  Box,
+  FlatList,
+  Avatar,
+  Row,
+  Column,
+  Text,
+  Spacer,
+  Pressable,
+  Center,
+} from 'native-base';
 import { data } from './mockdata';
-
-//redux
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../lib/redux/store';
 
 // navigation
 import { RootStackParamList } from '../../navigation/types';
@@ -14,13 +19,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 type Props = NativeStackScreenProps<RootStackParamList, 'List'>;
 
 export default function ListScreen(props: Props) {
-  const { user } = useSelector((state: RootState) => state.auth);
-  const [lists, setLists] = useState<any[]>([]);
-  const route = useRoute();
-  useEffect(() => {
-    setLists(data);
-  }, []);
-  const onPressListItem = async (item) => {
+  const [lists, setLists] = useState<any[]>(data);
+  const onPressListItem = async (item: any) => {
     props.navigation.navigate('Detail', {
       screen: 'Profile',
       params: item,
