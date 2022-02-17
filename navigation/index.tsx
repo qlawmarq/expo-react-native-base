@@ -30,7 +30,7 @@ import { RootStackParamList } from './types';
 import { Pressable, Icon } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 
-import { NavMenu } from './NavigationMenu'
+import { NavMenu } from './NavigationMenu';
 
 // state(redux)
 import { useSelector } from 'react-redux';

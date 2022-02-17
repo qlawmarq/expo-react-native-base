@@ -61,7 +61,13 @@ export default function ChatScreen() {
                 size="xs"
               />
             )}
-            <Icon position="absolute" color="primary.500" as={Feather} name="image" size="sm" />
+            <Icon
+              position="absolute"
+              color="primary.500"
+              as={Feather}
+              name="image"
+              size="sm"
+            />
           </Column>
         )}
       />
