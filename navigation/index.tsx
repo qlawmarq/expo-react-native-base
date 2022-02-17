@@ -30,6 +30,8 @@ import { RootStackParamList } from './types';
 import { Pressable, Icon } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 
+import { NavMenu } from './NavigationMenu'
+
 // state(redux)
 import { useSelector } from 'react-redux';
 import { RootState } from '../lib/redux/store';
@@ -63,16 +65,7 @@ export default function Navigator({ theme }: { theme: ITheme }) {
               title: 'List',
               headerShown: true,
               headerLeft: () => null,
-              headerRight: () => {
-                return (
-                  <Pressable
-                    mr={10}
-                    onPress={() => navigation.navigate('Settings')}
-                  >
-                    <Icon as={Feather} name="settings" size="sm" />
-                  </Pressable>
-                );
-              },
+              headerRight: () => <NavMenu />,
             })}
           />
           <Stack.Screen
