@@ -211,6 +211,9 @@ export default function Example() {
 
 ### Another libraries
 
-Please search here:
+Please check and search following:
 
 - https://reactnative.directory/popular
+- https://docs.expo.dev/workflow/using-libraries/
+
+*Note that some libraries do not support the Web app.*
