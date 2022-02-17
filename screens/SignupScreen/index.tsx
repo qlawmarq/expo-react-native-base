@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ApiService } from '../../lib/axios';
+import { useToast } from 'native-base';
 import {
   Box,
   Text,
@@ -20,18 +21,23 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>;
 
 export default function SignupScreen(props: Props) {
+  const toast = useToast();
   const [email, onChangeEmail] = React.useState('');
-  const [firstName, onChangeFirstName] = React.useState('');
-  const [lastName, onChangeLastName] = React.useState('');
+  const [first_name, onChangeFirstName] = React.useState('');
+  const [last_name, onChangeLastName] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const onPressSignup = async () => {
-    // const values = {
-    //   email,
-    //   password
-    // }
-    // const res = await ApiService.Signup(values)
-    // console.log(res)
+    const values = {
+      email,
+      password,
+      first_name,
+      last_name,
+    };
+    const res = await ApiService.signup(values);
     props.navigation.navigate('Signin');
+    toast.show({
+      description: 'Signed in successfully',
+    });
   };
   const onPressSigninLink = async () => {
     props.navigation.navigate('Signin');
@@ -47,15 +53,19 @@ export default function SignupScreen(props: Props) {
           </FormControl>
           <FormControl>
             <FormControl.Label>First Name</FormControl.Label>
-            <Input value={firstName} onChangeText={onChangeFirstName} />
+            <Input value={first_name} onChangeText={onChangeFirstName} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Last Name</FormControl.Label>
-            <Input value={lastName} onChangeText={onChangeLastName} />
+            <Input value={last_name} onChangeText={onChangeLastName} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
-            <Input value={password} onChangeText={onChangePassword} type="password" />
+            <Input
+              value={password}
+              onChangeText={onChangePassword}
+              type="password"
+            />
           </FormControl>
           <Button onPress={onPressSignup} mt="2">
             Sign up

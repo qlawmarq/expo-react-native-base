@@ -19,7 +19,7 @@
     "test": "jest --watchAll",
     "lint": "eslint . --ext .tsx,.ts",
     "lint:fix": "eslint --fix . --ext .tsx,.ts",
-    "format": "prettier --write './**/*.{ts,tsx}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,ts,tsx}' --config ./.prettierrc.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -41,7 +41,7 @@
     "expo-splash-screen": "0.14.1",
     "expo-status-bar": "1.2.0",
     "expo-web-browser": "10.1.0",
-    "native-base": "3.3.2",
+    "native-base": "3.3.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.64.3",
@@ -64,6 +64,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
     "expo-cli": "5.0.3",
     "jest-expo": "44.0.1",
     "prettier": "2.5.1",

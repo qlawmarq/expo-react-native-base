@@ -1,6 +1,14 @@
 import * as React from 'react';
-// import { ApiService } from '../../lib/axios';
-import { Box, Heading, Column, FormControl, Input, Button, Center } from 'native-base';
+import { ApiService } from '../../lib/axios';
+import {
+  Box,
+  Heading,
+  Column,
+  FormControl,
+  Input,
+  Button,
+  Center,
+} from 'native-base';
 
 // navigation
 import { RootStackParamList } from '../../navigation/types';
@@ -10,18 +18,17 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
 export default function SettingsScreen(props: Props) {
   const [email, onChangeEmail] = React.useState('');
-  const [firstName, onChangeFirstName] = React.useState('');
-  const [lastName, onChangeLastName] = React.useState('');
+  const [first_name, onChangeFirstName] = React.useState('');
+  const [last_name, onChangeLastName] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const onPressUpdate = async () => {
-    // const values = {
-    //   email,
-    //   password,
-    //   firstName,
-    //   lastName
-    // }
-    // const res = await ApiService.updateUser(values)
-    // console.log(res)
+    const values = {
+      email,
+      password,
+      first_name,
+      last_name,
+    };
+    const res = await ApiService.updateUser(values);
     props.navigation.navigate('List');
   };
   return (
@@ -35,15 +42,19 @@ export default function SettingsScreen(props: Props) {
           </FormControl>
           <FormControl>
             <FormControl.Label>First Name</FormControl.Label>
-            <Input value={firstName} onChangeText={onChangeFirstName} />
+            <Input value={first_name} onChangeText={onChangeFirstName} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Last Name</FormControl.Label>
-            <Input value={lastName} onChangeText={onChangeLastName} />
+            <Input value={last_name} onChangeText={onChangeLastName} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
-            <Input value={password} onChangeText={onChangePassword} type="password" />
+            <Input
+              value={password}
+              onChangeText={onChangePassword}
+              type="password"
+            />
           </FormControl>
           <Button onPress={onPressUpdate} mt="2">
             Update

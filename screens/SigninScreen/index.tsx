@@ -21,7 +21,11 @@ import {
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, setToken, setLoginEmail } from '../../lib/redux/reducers/authReducer';
+import {
+  setUser,
+  setToken,
+  setLoginEmail,
+} from '../../lib/redux/reducers/authReducer';
 import { RootState } from '../../lib/redux/store';
 
 // navigation
@@ -72,7 +76,11 @@ export default function SigninScreen(props: Props) {
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
-            <Input value={password} onChangeText={onChangePassword} type="password" />
+            <Input
+              value={password}
+              onChangeText={onChangePassword}
+              type="password"
+            />
           </FormControl>
           <Row space={3} width="100%">
             <Checkbox value="" isChecked={rememberMe} onChange={setRememberMe}>
