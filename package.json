@@ -13,6 +13,7 @@
     "web": "expo start --web",
     "login:expo": "expo login",
     "login:eas": "eas account:login",
+    "build:web": "expo build:web",
     "build:ios": "eas build --platform ios",
     "build:android": "eas build --platform android",
     "submit:ios": "eas submit --platform ios",

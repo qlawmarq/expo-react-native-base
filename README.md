@@ -64,7 +64,7 @@ After publishing is completed, please install the Expo Go on your mobile device:
 After installation, login with your account.  
 Now you can use your app on your device.
 
-## Building the App
+## Building Native App
 
 This app is using EAS Build for distribution.
 
@@ -96,6 +96,16 @@ npm run login:eas
 npm run build:ios
 npm run submit:ios
 ```
+
+## Building Web App
+
+```bash
+npm run build:web
+```
+
+Please check following for more details:
+
+- https://docs.expo.dev/distribution/publishing-websites/
 
 ## Guide
 
@@ -201,6 +211,9 @@ export default function Example() {
 
 ### Another libraries
 
-Please search here:
+Please check and search following:
 
 - https://reactnative.directory/popular
+- https://docs.expo.dev/workflow/using-libraries/
+
+*Note that some libraries do not support the Web app.*
