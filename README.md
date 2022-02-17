@@ -38,42 +38,63 @@ npm run start
 Now you are ready to develop your app, and you can check your app in a web browser or in the simulator of iOS/Android OS.
 
 Please check here for deatils:
-https://reactnative.dev/docs/environment-setup
-https://docs.expo.dev/get-started/installation/
-https://docs.expo.dev/get-started/errors/
 
-## Publish a internal testing app with Expo
+- https://reactnative.dev/docs/environment-setup
+- https://docs.expo.dev/get-started/installation/
+- https://docs.expo.dev/get-started/errors/
+
+## Publish a internal testing app with Expo Go
 
 Firstly, please make sure that you already have an [Expo account](https://expo.dev/).
 
 Run following command:
 
 ```bash
-npm run login
+npm run login:expo
 npm run publish
 ```
 
 If the app is successfully published to Expo, you can see the app informations in your Expo dashboard.
 
-After publishing is completed, please install the Expo App on your mobile device:
-https://apps.apple.com/en/app/expo-go/
-https://play.google.com/store/apps/details?id=host.exp.exponent
+After publishing is completed, please install the Expo Go on your mobile device:
 
-After installation, login with your account.
+- https://apps.apple.com/en/app/expo-go/
+- https://play.google.com/store/apps/details?id=host.exp.exponent
+
+After installation, login with your account.  
 Now you can use your app on your device.
 
-## Building the production app
+## Building the App
+
+This app is using EAS Build for distribution.
+
+EAS Build is a hosted service for building app binaries for your Expo and React Native projects.
+
+Also, this app includes the EAS CLI as a dependency, so you can build it by just entering commands.
+
+```bash
+npm run build:android
+npm run build:ios
+```
+
+Please check following for more details:
+
+- https://docs.expo.dev/build/introduction/
 
 ### Android
 
 ```bash
+npm run login:eas
 npm run build:android
+npm run submit:android
 ```
 
 ### iOS
 
 ```bash
+npm run login:eas
 npm run build:ios
+npm run submit:ios
 ```
 
 ## Guide
@@ -109,7 +130,7 @@ const { user, token } = useSelector((state: RootState) => state.auth);
 
 ## Components
 
-This app are using [Native Base](https://docs.nativebase.io) for base compoents.
+This app are using [Native Base](https://docs.nativebase.io) for base compoents.  
 Please check their documents first.
 
 For example, if you want to use `Button` component, check here:
@@ -117,7 +138,7 @@ https://docs.nativebase.io/button
 
 ### Theme
 
-The theme settings of the app can be changed in `theme.ts`.
+The theme settings of the app can be changed in `theme.ts`.  
 You can customize color schema, style of component, font style, and more.
 
 Learn more about extending/customizing theme:
@@ -128,7 +149,7 @@ Learn more about extending/customizing theme:
 - https://docs.nativebase.io/utility-props#style-props
 - https://reactnavigation.org/docs/themes/
 
-Regarding dark mode and light mode, basically, it automatically sets by user's enviroment.
+Regarding dark mode and light mode, basically, it automatically sets by user's enviroment.  
 However, it is also possible to set them manually:
 
 ```ts
@@ -153,7 +174,7 @@ The color theme for the component will also be set automatically, but you can cu
 
 ### Navigation
 
-You can setup routing inside of `navigation` folder.
+You can setup routing inside of `navigation` folder.  
 For more information, Please check [React Navigation](https://reactnavigation.org/) website.
 
 ### External API calling
@@ -167,7 +188,8 @@ Of course, you can add your own api in `lib/axios`.
 ### Icon
 
 You can explore the built-in icon families and icons on the web at following:
-https://icons.expo.fyi/
+
+- https://icons.expo.fyi/
 
 ```ts
 import { Icon } from 'native-base';
@@ -180,4 +202,5 @@ export default function Example() {
 ### Another libraries
 
 Please search here:
-https://reactnative.directory/popular
+
+- https://reactnative.directory/popular
