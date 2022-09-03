@@ -35,7 +35,7 @@
     "@react-navigation/bottom-tabs": "6.3.2",
     "@react-navigation/native": "6.0.11",
     "@react-navigation/native-stack": "6.7.0",
-    "@reduxjs/toolkit": "1.8.3",
+    "@reduxjs/toolkit": "1.8.5",
     "axios": "0.26.1",
     "expo": "46.0.10",
     "expo-asset": "8.6.1",
