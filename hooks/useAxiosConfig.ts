@@ -20,7 +20,6 @@ export default function usePusherNotification() {
           dispatch(setToken(undefined));
           toast.show({
             title: 'Error',
-            status: 'error',
             placement: 'top',
             description: String(error),
           });
