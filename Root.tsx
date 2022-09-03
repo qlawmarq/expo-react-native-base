@@ -12,7 +12,7 @@ import useAxiosConfig from './hooks/useAxiosConfig';
 // navigation
 import Navigation from './navigation';
 
-export const Root: React.FC<{theme: ITheme}> = ({ theme }) => {
+export const Root: React.FC<{ theme: ITheme }> = ({ theme }) => {
   const isLoadingComplete = useCachedResources();
   const isAxiosSetupComplete = useAxiosConfig();
   return (
