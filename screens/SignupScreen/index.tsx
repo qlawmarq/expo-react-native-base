@@ -49,7 +49,7 @@ export default function SignupScreen(props: Props) {
         <Column space={3} mt="5">
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
-            <Input value={email} onChangeText={onChangeEmail} type="email" />
+            <Input value={email} onChangeText={onChangeEmail} type="text" />
           </FormControl>
           <FormControl>
             <FormControl.Label>First Name</FormControl.Label>
