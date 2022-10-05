@@ -16,12 +16,10 @@ import { ITheme } from 'native-base';
 import { navDarkTheme, navLightTheme } from '../theme';
 
 // routing
-import SigninScreen from '../screens/SigninScreen';
-import SignupScreen from '../screens/SignupScreen';
-import ListScreen from '../screens/ListScreen';
-import NotfoundScreen from '../screens/NotFoundScreen';
-import DetailScreen from '../screens/DetailScreen';
-import ConfigurationScreen from '../screens/SettingsScreen';
+import { SigninScreen } from '../screens/SigninScreen';
+import { SignupScreen } from '../screens/SignupScreen';
+import { ListScreen } from '../screens/ListScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
 
 // type
 import { RootStackParamList } from './types';
@@ -48,17 +46,9 @@ export default function Navigator({ theme }: { theme: ITheme }) {
         // Authenticated users rooting
         <Stack.Navigator initialRouteName="List">
           <Stack.Screen
-            name="NotFound"
-            component={NotfoundScreen}
-            options={() => ({
-              title: 'NotFound',
-              headerShown: false,
-            })}
-          />
-          <Stack.Screen
             name="List"
             component={ListScreen}
-            options={({ navigation }) => ({
+            options={() => ({
               title: 'List',
               headerShown: true,
               headerLeft: () => null,
@@ -66,17 +56,9 @@ export default function Navigator({ theme }: { theme: ITheme }) {
             })}
           />
           <Stack.Screen
-            name="Detail"
-            component={DetailScreen}
-            options={() => ({
-              title: 'Detail',
-              headerShown: true,
-            })}
-          />
-          <Stack.Screen
             name="Settings"
-            component={ConfigurationScreen}
-            options={({ navigation }) => ({
+            component={SettingsScreen}
+            options={() => ({
               title: 'Settings',
               headerShown: true,
             })}
@@ -85,14 +67,6 @@ export default function Navigator({ theme }: { theme: ITheme }) {
       ) : (
         // NOT authenticated users rooting
         <Stack.Navigator initialRouteName="Signin">
-          <Stack.Screen
-            name="NotFound"
-            component={NotfoundScreen}
-            options={() => ({
-              title: 'NotFound',
-              headerShown: false,
-            })}
-          />
           <Stack.Screen
             name="Signin"
             component={SigninScreen}
@@ -124,15 +98,13 @@ import { LinkingOptions } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
 
 const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: [Linking.makeUrl('/')],
+  prefixes: [Linking.createURL('/')],
   config: {
     screens: {
       Signin: 'signin',
       Signup: 'signup',
       List: 'list',
-      Detail: 'detail',
       Settings: 'settings',
-      NotFound: '*',
     },
   },
 };

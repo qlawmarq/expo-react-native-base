@@ -3,9 +3,21 @@ export interface SigninModel {
   password: string;
 }
 
-export interface userModel {
+export interface UserUpdateModel {
+  password: string;
   email: string;
   first_name: string;
   last_name: string;
-  password: string;
+}
+
+export interface UserModel {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+}
+
+export interface Token {
+  access_token: string;
+  refresh_token: string;
 }

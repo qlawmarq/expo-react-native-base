@@ -2,14 +2,14 @@
   "expo": {
     "name": "rn-base-app",
     "slug": "rn-base-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
+    "version": "2.0.0",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -17,12 +17,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "com.masa.sampleapp",
+      "bundleIdentifier": "com.sampleapp",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.masa.sampleapp",
+      "package": "com.sampleapp",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
@@ -32,14 +32,6 @@
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "The app accesses your photos to let you share them with your friend.",
-          "cameraPermission": "The app accesses your photos to let you share them with your friend."
-        }
-      ]
-    ]
+    "plugins": []
   }
 }

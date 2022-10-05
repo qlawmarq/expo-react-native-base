@@ -25,7 +25,11 @@ export const NavMenu = () => {
       closeOnSelect={true}
       trigger={(triggerProps) => {
         return (
-          <Pressable accessibilityLabel="More options menu" {...triggerProps}>
+          <Pressable
+            accessibilityLabel="More options menu"
+            {...triggerProps}
+            mr={2}
+          >
             <HamburgerIcon size="sm" />
           </Pressable>
         );

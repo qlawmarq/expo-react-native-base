@@ -1,10 +1,4 @@
-# React Native Base Starter App
-
-## Main Features
-
-- Web/iOS/Android support
-- Dark/Light theme support
-- Chat view by [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
+# React Native Base App
 
 ## Main libraries
 
@@ -12,17 +6,12 @@
 - [Expo](https://expo.dev/)
 - [React Navigation](https://reactnavigation.org/)
 - [Native Base](https://nativebase.io/)
-- [Gifted Chat](https://github.com/FaridSafi/react-native-gifted-chat)
-- [Axios](https://axios-http.com/)
 - [Redux(toolkit)](https://redux-toolkit.js.org/)
-- [Redux Persist](https://github.com/rt2zz/redux-persist)
-- [Async Storage](https://react-native-async-storage.github.io/async-storage/)
 
 ## API Server & DB Server
 
-If you need an API and DB server for development, please clone from the following:
-
-https://github.com/masaiborg/fastapi-mysql-docker
+If you need API and DB server, please clone from the following:  
+https://github.com/cymagix/fastapi-mysql-docker
 
 ## Development
 
@@ -41,28 +30,6 @@ Please check here for deatils:
 
 - https://reactnative.dev/docs/environment-setup
 - https://docs.expo.dev/get-started/installation/
-- https://docs.expo.dev/get-started/errors/
-
-## Publish a internal testing app with Expo Go
-
-Firstly, please make sure that you already have an [Expo account](https://expo.dev/).
-
-Run following command:
-
-```bash
-npm run login:expo
-npm run publish
-```
-
-If the app is successfully published to Expo, you can see the app informations in your Expo dashboard.
-
-After publishing is completed, please install the Expo Go on your mobile device:
-
-- https://apps.apple.com/en/app/expo-go/
-- https://play.google.com/store/apps/details?id=host.exp.exponent
-
-After installation, login with your account.  
-Now you can use your app on your device.
 
 ## Building Native App
 
@@ -84,7 +51,7 @@ Please check following for more details:
 ### Android
 
 ```bash
-npm run login:eas
+npm run login
 npm run build:android
 npm run submit:android
 ```
@@ -92,7 +59,7 @@ npm run submit:android
 ### iOS
 
 ```bash
-npm run login:eas
+npm run login
 npm run build:ios
 npm run submit:ios
 ```
@@ -137,14 +104,6 @@ import { RootState } from '../lib/redux/store';
 // get user & token from redux
 const { user, token } = useSelector((state: RootState) => state.auth);
 ```
-
-## Components
-
-This app are using [Native Base](https://docs.nativebase.io) for base compoents.  
-Please check their documents first.
-
-For example, if you want to use `Button` component, check here:
-https://docs.nativebase.io/button
 
 ### Theme
 
@@ -208,12 +167,3 @@ export default function Example() {
   return <Icon as={Feather} name="message-square" size="sm" />;
 }
 ```
-
-### Another libraries
-
-Please check and search following:
-
-- https://reactnative.directory/popular
-- https://docs.expo.dev/workflow/using-libraries/
-
-*Note that some libraries do not support the Web app.*

@@ -13,13 +13,16 @@ import {
 // navigation
 import { RootStackParamList } from '../../navigation/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../lib/redux/store';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
-export default function SettingsScreen(props: Props) {
-  const [email, onChangeEmail] = React.useState('');
-  const [first_name, onChangeFirstName] = React.useState('');
-  const [last_name, onChangeLastName] = React.useState('');
+export const SettingsScreen: React.FC<Props> = (props) => {
+  const { user } = useSelector((state: RootState) => state.auth);
+  const [email, onChangeEmail] = React.useState(user.email);
+  const [first_name, onChangeFirstName] = React.useState(user.first_name);
+  const [last_name, onChangeLastName] = React.useState(user.last_name);
   const [password, onChangePassword] = React.useState('');
   const onPressUpdate = async () => {
     const values = {
@@ -28,8 +31,10 @@ export default function SettingsScreen(props: Props) {
       first_name,
       last_name,
     };
-    const res = await ApiService.updateUser(values);
-    props.navigation.navigate('List');
+    ApiService.updateUser(values).then((res) => {
+      console.log(res);
+      props.navigation.navigate('List');
+    });
   };
   return (
     <Center width="100%">
@@ -63,4 +68,4 @@ export default function SettingsScreen(props: Props) {
       </Box>
     </Center>
   );
-}
+};

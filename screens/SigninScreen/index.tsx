@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // api
-import { ApiService } from '../../lib/axios';
+import { apiClient, ApiService } from '../../lib/axios';
 
 //components
 import {
@@ -34,21 +34,29 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Signin'>;
 
-export default function SigninScreen(props: Props) {
+export const SigninScreen: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const { loginInfo } = useSelector((state: RootState) => state.auth);
   const [email, onChangeEmail] = React.useState(loginInfo?.email);
   const [password, onChangePassword] = React.useState(loginInfo?.password);
   const [rememberMe, setRememberMe] = React.useState(!!loginInfo?.email);
   const onPressSigninButton = async () => {
-    try {
-      const values = {
-        email,
-        password,
-      };
-      const res = await ApiService.signin(values);
+    const values = {
+      email,
+      password,
+    };
+    ApiService.signin(values).then((res) => {
+      console.log(res);
       dispatch(setUser(res.data.user));
       dispatch(setToken(res.data.token));
+      // Set auth token
+      apiClient.interceptors.request.use((config) => {
+        if (config.headers) {
+          config.headers.Authorization = `Bearer ${res.data.token.access_token}`;
+        }
+        return config;
+      });
+      // If remember me checked, then save user data to storage
       if (rememberMe) {
         dispatch(
           setLoginEmail({
@@ -58,11 +66,9 @@ export default function SigninScreen(props: Props) {
         );
       }
       props.navigation.navigate('List');
-    } catch (error) {
-      console.warn(error);
-    }
+    });
   };
-  const onPressSignupLink = async () => {
+  const onPressSignupLink = () => {
     props.navigation.navigate('Signup');
   };
   return (
@@ -102,4 +108,4 @@ export default function SigninScreen(props: Props) {
       </Box>
     </Center>
   );
-}
+};
