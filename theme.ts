@@ -1,4 +1,4 @@
-import { extendTheme, themeTools, ITheme } from 'native-base';
+import { extendTheme, ITheme } from 'native-base';
 
 /**
  * Learn more about extending/customizing theme:
@@ -27,7 +27,7 @@ const dark = {
   background: schema[900],
   card: schema[900],
   text: schema[50],
-  border: schema[700],
+  border: schema[400],
   notification: schema[400],
 };
 
@@ -36,37 +36,45 @@ const light = {
   background: schema[50],
   card: schema[50],
   text: schema[900],
-  border: schema[300],
-  notification: schema[400],
+  border: schema[600],
+  notification: schema[600],
 };
 
 export const theme: ITheme = extendTheme({
+  config: {
+    useSystemColorMode: true,
+    initialColorMode: 'light',
+  },
   colors: {
     primary: schema,
+    text: schema,
     dark: dark,
     light: light,
   },
-  fonts: {
-    // heading: 'Open Sans, sans-serif',
-    // body: 'Open Sans, sans-serif',
-    // mono: 'Open Sans, sans-serif',
-  },
+  fonts: {},
   components: {
-    Heading: {
-      baseStyle: (props: any) => {
-        return {
-          color: themeTools.mode('light.primary', 'dark.primary')(props),
-        };
-      },
-    },
     Button: {
       defaultProps: {
         colorScheme: 'primary',
+        variant: 'solid',
       },
     },
     Input: {
       defaultProps: {
-        variant: 'underlined',
+        colorScheme: 'primary',
+        variant: 'filled',
+      },
+    },
+    Select: {
+      defaultProps: {
+        colorScheme: 'primary',
+        variant: 'filled',
+      },
+    },
+    ModalContent: {
+      baseStyle: {
+        _light: { bg: 'primary.50' },
+        _dark: { bg: 'primary.900' },
       },
     },
   },

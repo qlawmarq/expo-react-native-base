@@ -8,28 +8,44 @@ import {
   Input,
   Button,
   Center,
+  useToast,
 } from 'native-base';
 
 // navigation
 import { RootStackParamList } from '../../navigation/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../lib/redux/store';
+import { useState } from 'react';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
-export default function SettingsScreen(props: Props) {
-  const [email, onChangeEmail] = React.useState('');
-  const [first_name, onChangeFirstName] = React.useState('');
-  const [last_name, onChangeLastName] = React.useState('');
-  const [password, onChangePassword] = React.useState('');
+export const SettingsScreen: React.FC<Props> = (props) => {
+  const toast = useToast();
+  const { user } = useSelector((state: RootState) => state.auth);
+  const [email, onChangeEmail] = useState(user?.email);
+  const [first_name, onChangeFirstName] = useState(user?.first_name);
+  const [last_name, onChangeLastName] = useState(user?.last_name);
+  const [password, onChangePassword] = useState('');
   const onPressUpdate = async () => {
-    const values = {
-      email,
-      password,
-      first_name,
-      last_name,
-    };
-    const res = await ApiService.updateUser(values);
-    props.navigation.navigate('List');
+    if (email && password && first_name && last_name) {
+      const values = {
+        email,
+        password,
+        first_name,
+        last_name,
+      };
+      ApiService.updateUser(values).then((res) => {
+        console.log(res);
+        props.navigation.navigate('List');
+      });
+    } else {
+      toast.show({
+        title: 'Warning',
+        placement: 'top',
+        description: 'Please fill all fields.',
+      });
+    }
   };
   return (
     <Center width="100%">
@@ -63,4 +79,4 @@ export default function SettingsScreen(props: Props) {
       </Box>
     </Center>
   );
-}
+};

@@ -1,31 +1,52 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Box,
   FlatList,
-  Avatar,
   Row,
   Column,
   Text,
-  Spacer,
   Pressable,
   Center,
+  Icon,
+  Heading,
 } from 'native-base';
-import { data } from './mockdata';
 
 // navigation
 import { RootStackParamList } from '../../navigation/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useFocusEffect } from '@react-navigation/native';
+import { ApiService, UserModel } from '../../lib/axios';
+import Feather from '@expo/vector-icons/build/Feather';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'List'>;
 
-export default function ListScreen(props: Props) {
-  const [lists, setLists] = useState<any[]>(data);
-  const onPressListItem = async (item: any) => {
-    props.navigation.navigate('Detail', {
-      screen: 'Profile',
-      params: item,
+export const ListScreen: React.FC<Props> = () => {
+  const [lists, setLists] = useState<UserModel[]>();
+  const onPressListItem = async (item: UserModel) => {
+    // TODO: do something
+    // props.navigation.navigate('Detail', {
+    //   screen: 'Profile',
+    //   params: item,
+    // });
+    console.log(item);
+  };
+  const GetUsers = () => {
+    ApiService.getUsers().then((e) => {
+      console.log(e);
+      setLists(e.data);
     });
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      // Do something when the screen is focused
+      GetUsers();
+      return () => {
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, [])
+  );
   return (
     <Center width="100%">
       <Box w="100%">
@@ -46,27 +67,32 @@ export default function ListScreen(props: Props) {
                 py="2"
               >
                 <Row space={3} justifyContent="space-between">
-                  <Avatar
-                    size="48px"
-                    source={{
-                      uri: item.avatarUrl,
-                    }}
-                  />
-                  <Column>
-                    <Text bold>{item.fullName}</Text>
-                    <Text>{item.message}</Text>
+                  <Column mr={1}>
+                    <Row>
+                      <Column justifyContent="center">
+                        <Icon
+                          as={Feather}
+                          color="emerald.500"
+                          name="user"
+                          size="sm"
+                          mr={3}
+                        />
+                      </Column>
+                      <Column>
+                        <Heading fontSize="sm">
+                          Name: {item.first_name + ' ' + item.last_name}
+                        </Heading>
+                        <Text fontSize="xs">Email {item.email}</Text>
+                      </Column>
+                    </Row>
                   </Column>
-                  <Spacer />
-                  <Text fontSize="xs" alignSelf="flex-start">
-                    {item.date}
-                  </Text>
                 </Row>
               </Box>
             </Pressable>
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => String(item.email)}
         />
       </Box>
     </Center>
   );
-}
+};

@@ -20,7 +20,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>;
 
-export default function SignupScreen(props: Props) {
+export const SignupScreen: React.FC<Props> = (props) => {
   const toast = useToast();
   const [email, onChangeEmail] = React.useState('');
   const [first_name, onChangeFirstName] = React.useState('');
@@ -78,4 +78,4 @@ export default function SignupScreen(props: Props) {
       </Box>
     </Center>
   );
-}
+};
