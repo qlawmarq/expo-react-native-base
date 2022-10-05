@@ -2,7 +2,7 @@ import { apiClient } from '../lib/axios';
 import { useToast } from 'native-base';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, setToken } from '../lib/redux/reducers/authReducer';
+import { resetAuthData } from '../lib/redux/reducers/authReducer';
 import { RootState } from '../lib/redux/store';
 import { useEffect, useState } from 'react';
 
@@ -27,8 +27,7 @@ export default function usePusherNotification() {
         (error) => {
           // If API return 401 not authorized error, then sign-out
           if (error?.response.status == 401) {
-            dispatch(setUser(undefined));
-            dispatch(setToken(undefined));
+            dispatch(resetAuthData());
             toast.show({
               title: 'Error',
               placement: 'top',

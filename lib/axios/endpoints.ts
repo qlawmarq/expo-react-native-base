@@ -1,16 +1,21 @@
 import http from './http';
-import { UserModel, SigninModel, Token, UserUpdateModel } from './model';
+import {
+  UserModel,
+  SigninModel,
+  Token,
+  UserRegisterOrUpdateModel,
+} from './model';
 
 class ApiService {
-  signup(data: UserModel) {
-    return http.post('/v1/signup', data);
+  signup(data: UserRegisterOrUpdateModel) {
+    return http.post<UserModel>('/v1/signup', data);
   }
 
   signin(data: SigninModel) {
     return http.post<{ user: UserModel; token: Token }>('/v1/signin', data);
   }
 
-  updateUser(data: UserUpdateModel) {
+  updateUser(data: UserRegisterOrUpdateModel) {
     return http.post<UserModel>('/v1/user/update', data);
   }
 

@@ -3,7 +3,7 @@ export interface SigninModel {
   password: string;
 }
 
-export interface UserUpdateModel {
+export interface UserRegisterOrUpdateModel {
   password: string;
   email: string;
   first_name: string;

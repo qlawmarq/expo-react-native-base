@@ -6,7 +6,7 @@ import { RootStackParamList } from './types';
 import { useNavigation } from '@react-navigation/native';
 // state(redux)
 import { useDispatch } from 'react-redux';
-import { setUser, setToken } from '../lib/redux/reducers/authReducer';
+import { resetAuthData } from '../lib/redux/reducers/authReducer';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
@@ -16,8 +16,7 @@ export const NavMenu = () => {
   const navigation = useNavigation<NavigationProp['navigation']>();
   const dispatch = useDispatch();
   const doLogout = () => {
-    dispatch(setToken(undefined));
-    dispatch(setUser(undefined));
+    dispatch(resetAuthData());
     navigation.navigate('Signin');
   };
   return (

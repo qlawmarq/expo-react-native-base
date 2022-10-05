@@ -6,17 +6,24 @@ interface LoginInfo {
   password: string;
 }
 
+const initialState = {
+  user: undefined as undefined | UserModel,
+  token: undefined as undefined | Token,
+  loginInfo: {
+    email: '',
+    password: '',
+  } as LoginInfo,
+};
+
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: undefined as unknown as UserModel,
-    token: undefined as unknown as Token,
-    loginInfo: {
-      email: '',
-      password: '',
-    } as LoginInfo,
-  },
+  initialState,
   reducers: {
+    reset: () => initialState,
+    resetAuthData: (state) => {
+      state.user = undefined;
+      state.token = undefined;
+    },
     setUser(state, action: PayloadAction<UserModel>) {
       state.user = action.payload;
     },
@@ -29,5 +36,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, setToken, setLoginEmail } = authSlice.actions;
+export const { reset, resetAuthData, setUser, setToken, setLoginEmail } =
+  authSlice.actions;
 export default authSlice.reducer;

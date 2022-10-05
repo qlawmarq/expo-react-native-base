@@ -90,7 +90,7 @@ export const ListScreen: React.FC<Props> = () => {
               </Box>
             </Pressable>
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => String(item.email)}
         />
       </Box>
     </Center>
