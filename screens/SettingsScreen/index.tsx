@@ -1,82 +1,60 @@
 import * as React from 'react';
-import { ApiService } from '../../lib/axios';
-import {
-  Box,
-  Heading,
-  Column,
-  FormControl,
-  Input,
-  Button,
-  Center,
-  useToast,
-} from 'native-base';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { UserSettingScreen } from './UserSettingScreen';
+import { AppConfigScreen } from './AppConfigScreen';
+import { Icon } from 'native-base';
+import { Feather } from '@expo/vector-icons';
+
+/**
+ * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
+ * https://reactnavigation.org/docs/bottom-tab-navigator
+ */
+const BottomTab = createBottomTabNavigator<SettingsScreenTabParamList>();
 
 // navigation
-import { RootStackParamList } from '../../navigation/types';
+import {
+  RootStackParamList,
+  SettingsScreenTabParamList,
+} from '../../navigation/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../lib/redux/store';
-import { useState } from 'react';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
-export const SettingsScreen: React.FC<Props> = (props) => {
-  const toast = useToast();
-  const { user } = useSelector((state: RootState) => state.auth);
-  const [email, onChangeEmail] = useState(user?.email);
-  const [first_name, onChangeFirstName] = useState(user?.first_name);
-  const [last_name, onChangeLastName] = useState(user?.last_name);
-  const [password, onChangePassword] = useState('');
-  const onPressUpdate = async () => {
-    if (email && password && first_name && last_name) {
-      const values = {
-        email,
-        password,
-        first_name,
-        last_name,
-      };
-      ApiService.updateUser(values).then((res) => {
-        console.log(res);
-        props.navigation.navigate('List');
-      });
-    } else {
-      toast.show({
-        title: 'Warning',
-        placement: 'top',
-        description: 'Please fill all fields.',
-      });
-    }
-  };
+export const SettingsScreen: React.FC<Props> = () => {
   return (
-    <Center width="100%">
-      <Box safeArea p="2" py="8" w="90%">
-        <Heading>Update your account</Heading>
-        <Column space={3} mt="5">
-          <FormControl>
-            <FormControl.Label>Email</FormControl.Label>
-            <Input value={email} onChangeText={onChangeEmail} type="text" />
-          </FormControl>
-          <FormControl>
-            <FormControl.Label>First Name</FormControl.Label>
-            <Input value={first_name} onChangeText={onChangeFirstName} />
-          </FormControl>
-          <FormControl>
-            <FormControl.Label>Last Name</FormControl.Label>
-            <Input value={last_name} onChangeText={onChangeLastName} />
-          </FormControl>
-          <FormControl>
-            <FormControl.Label>Password</FormControl.Label>
-            <Input
-              value={password}
-              onChangeText={onChangePassword}
-              type="password"
+    <BottomTab.Navigator initialRouteName="UserSetting">
+      <BottomTab.Screen
+        name="UserSetting"
+        component={UserSettingScreen}
+        options={{
+          title: 'User setting',
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Icon
+              as={Feather}
+              name="user-check"
+              size="sm"
+              color={color}
             />
-          </FormControl>
-          <Button onPress={onPressUpdate} mt="2">
-            Update
-          </Button>
-        </Column>
-      </Box>
-    </Center>
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="AppConfig"
+        component={AppConfigScreen}
+        options={{
+          title: 'App config',
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Icon
+              as={Feather}
+              name="info"
+              size="sm"
+              color={color}
+            />
+          ),
+        }}
+      />
+    </BottomTab.Navigator>
   );
 };
