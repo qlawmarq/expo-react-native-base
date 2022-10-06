@@ -33,10 +33,13 @@ export const SignupScreen: React.FC<Props> = (props) => {
       first_name,
       last_name,
     };
-    const res = await ApiService.signup(values);
-    props.navigation.navigate('Signin');
-    toast.show({
-      description: 'Signed in successfully',
+    ApiService.signup(values).then(() => {
+      toast.show({
+        description: 'Signed in successfully',
+      });
+      setTimeout(() => {
+        props.navigation.navigate('Signin');
+      }, 1000);
     });
   };
   const onPressSigninLink = async () => {
