@@ -38,6 +38,7 @@ export default function Navigator({ theme }: { theme: ITheme }) {
 
   return (
     <NavigationContainer
+      linking={linking}
       theme={
         theme.config?.initialColorMode === 'dark' ? navDarkTheme : navLightTheme
       }

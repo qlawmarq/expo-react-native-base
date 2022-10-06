@@ -30,12 +30,7 @@ export const SettingsScreen: React.FC<Props> = () => {
           title: 'User setting',
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <Icon
-              as={Feather}
-              name="user-check"
-              size="sm"
-              color={color}
-            />
+            <Icon as={Feather} name="user-check" size="sm" color={color} />
           ),
         }}
       />
@@ -46,12 +41,7 @@ export const SettingsScreen: React.FC<Props> = () => {
           title: 'App config',
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <Icon
-              as={Feather}
-              name="info"
-              size="sm"
-              color={color}
-            />
+            <Icon as={Feather} name="info" size="sm" color={color} />
           ),
         }}
       />

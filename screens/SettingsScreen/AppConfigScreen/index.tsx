@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import { useFocusEffect } from '@react-navigation/native';
@@ -12,7 +12,6 @@ import {
   Text,
   Modal,
   Heading,
-  useToast,
   ScrollView,
   Center,
 } from 'native-base';
@@ -41,11 +40,10 @@ type Props = CompositeScreenProps<
   NativeStackScreenProps<RootStackParamList>
 >;
 
-export const AppConfigScreen: React.FC<Props> = (props) => {
+export const AppConfigScreen: React.FC<Props> = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>();
-  const toast = useToast();
   const dispatch = useDispatch();
   useFocusEffect(
     useCallback(() => {

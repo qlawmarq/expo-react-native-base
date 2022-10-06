@@ -34,7 +34,13 @@ export const NavMenu = () => {
         );
       }}
     >
-      <Menu.Item onPress={() => navigation.navigate('Settings')}>
+      <Menu.Item
+        onPress={() =>
+          navigation.navigate('Settings', {
+            screen: 'UserSetting',
+          })
+        }
+      >
         <Text>Settings</Text>
       </Menu.Item>
       <Menu.Item onPress={() => doLogout()}>
