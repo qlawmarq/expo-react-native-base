@@ -8,6 +8,10 @@
 - [Native Base](https://nativebase.io/)
 - [Redux(toolkit)](https://redux-toolkit.js.org/)
 
+## Example of an app using this template
+
+https://github.com/cymagix/pokemon-sv-clock
+
 ## API Server & DB Server
 
 If you need API and DB server, please clone from the following:  
