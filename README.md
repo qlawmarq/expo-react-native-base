@@ -10,12 +10,12 @@
 
 ## Example of an app using this template
 
-https://github.com/cymagix/pokemon-sv-clock
+https://github.com/qlawmarq/pokemon-sv-clock
 
 ## API Server & DB Server
 
 If you need API and DB server, please clone from the following:  
-https://github.com/cymagix/fastapi-mysql-docker
+https://github.com/qlawmarq/fastapi-mysql-docker
 
 ## Development
 
